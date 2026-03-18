@@ -45,13 +45,10 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--purple-600);
-      letter-spacing: 0.02em;
+      display: flex; align-items: center;
       text-decoration: none;
     }
+    .nav-logo svg { height: 36px; width: auto; }
 
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -89,7 +86,32 @@
     }
 
     .hero-grid {
-      display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: center;
+      display: grid; grid-template-columns: 1fr 340px; gap: 5rem; align-items: center;
+    }
+
+    .hero-photo-col {
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 280px; height: 280px;
+    }
+
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border-radius: 50%;
+      border: 1.5px solid var(--purple-200);
+      opacity: 0.6;
+    }
+
+    .hero-photo {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     h1 {
@@ -375,6 +397,24 @@
 
     .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 
+    .sobre-photo-wrap {
+      position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+
+    .sobre-photo {
+      width: 200px; height: 200px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 3px solid var(--purple-100);
+      display: block;
+    }
+
+    .sobre-photo-tag {
+      background: var(--purple-50); border: 0.5px solid var(--purple-100);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 12px; color: var(--purple-800); font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
     .sobre-text {}
 
     .sobre-intro {
@@ -461,6 +501,8 @@
       .hero { padding: 7rem 1.5rem 3rem; }
       .hero-grid, .dash-item, .dash-item.reverse,
       .case-grid, .app-grid, .sobre-grid { grid-template-columns: 1fr; gap: 2rem; direction: ltr; }
+      .hero-photo-col { order: -1; }
+      .hero-photo-wrap, .hero-photo { width: 180px; height: 180px; }
       .dash-frame { aspect-ratio: 16/10; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -471,7 +513,14 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Monithelly</a>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#534AB7"/>
+      <text x="18" y="20" font-family="Cormorant Garamond,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+      <text x="44" y="15" font-family="Cormorant Garamond,Georgia,serif" font-size="19" font-weight="500" fill="#1a1825">Monithelly</text>
+      <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#888780" letter-spacing="1.4">ANALISTA DE DADOS</text>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#dashboards">Dashboards</a></li>
     <li><a href="#case">Business Case</a></li>
@@ -487,7 +536,7 @@
     <div class="hero-eyebrow">Analista de Dados e Melhoria Contínua</div>
     <div class="hero-grid">
       <div>
-        <h1>Números que contam<br><em>histórias que importam.</em></h1>
+        <h1>Olá, sou a<br><em>Monithelly.</em></h1>
         <p class="hero-desc">
           Sou analista de dados e melhoria contínua. Pego os dados, faço o tratamento necessário e transformo em relatórios visuais que ajudam quem precisa tomar decisão. Aqui você vai conhecer um pouco do meu trabalho em Dashboards, Business Cases e Python.
         </p>
@@ -496,32 +545,16 @@
           <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-outline">LinkedIn →</a>
         </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-icon">📊</div>
-          <div>
-            <div class="stat-label">Power BI</div>
-            <div class="stat-value">3 dashboards publicados</div>
-            <div class="stat-sub">Logística, Vendas e Customer Success</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">📋</div>
-          <div>
-            <div class="stat-label">Business Case</div>
-            <div class="stat-value">Distrimax · SQL + BI</div>
-            <div class="stat-sub">Melhoria contínua com impacto real</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🐍</div>
-          <div>
-            <div class="stat-label">Em desenvolvimento</div>
-            <div class="stat-value">App Python</div>
-            <div class="stat-sub">Em breve no portfólio</div>
-          </div>
+      <div class="hero-photo-col">
+        <div class="hero-photo-wrap">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4E03AQEsVaodzpo2CQ/profile-displayphoto-scale_400_400/B4EZsniO55GoAg-/0/1765894844830?e=1775692800&v=beta&t=JnLmJpfiTp3zqnGAanUYoujuYi2-D_mIM4C8hUYRHcI"
+            alt="Monithelly Simões"
+            class="hero-photo"
+          />
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -748,10 +781,10 @@
       <div class="sobre-text reveal">
         <div class="section-tag" style="margin-bottom:1rem;">Sobre</div>
         <p class="sobre-intro">
-          Analista de dados e melhoria contínua. Pego os dados, faço o tratamento e transformo em <em>relatórios visuais que ajudam a tomar decisão.</em>
+          Sou a Monithelly, analista de BI e melhoria contínua. Pego os dados, faço o tratamento e transformo em <em>relatórios visuais que ajudam a tomar decisão.</em>
         </p>
         <p class="sobre-desc">
-          Não abro nenhuma ferramenta antes de entender o problema. O dado certo para a pergunta errada não serve. Por isso cada projeto começa pelo contexto: o que a empresa precisa saber, o que os dados têm para dizer, e o que faz sentido mostrar visualmente.
+          Já estou nessa área há algum tempo e mesmo trabalhando com dados no dia a dia, nunca tive tempo para fazer projetos que fossem me desafiar de verdade. Me dediquei nas horas vagas, nas folgas e nos fins de semana para construir este portfólio. Aqui você vai conhecer um pouco do meu trabalho em Dashboards, Business Cases e Python.
         </p>
         <div class="skills-list">
           <div class="skill-item">Power BI</div>
@@ -768,18 +801,16 @@
           <a href="https://github.com/monithelly" target="_blank" class="btn-outline">GitHub</a>
         </div>
       </div>
-      <div class="sobre-visual reveal">
-        <div class="about-stat">
-          <div class="about-stat-num">3</div>
-          <div class="about-stat-label">Dashboards publicados em Power BI com dados tratados e indicadores que fazem sentido para o negócio</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">1</div>
-          <div class="about-stat-label">Business case completo com SQL, análise de causa raiz e impacto financeiro projetado</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">∞</div>
-          <div class="about-stat-label">Vontade de entender o problema antes de abrir qualquer ferramenta</div>
+      <div class="sobre-photo-wrap reveal">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D4E03AQEsVaodzpo2CQ/profile-displayphoto-scale_400_400/B4EZsniO55GoAg-/0/1765894844830?e=1775692800&v=beta&t=JnLmJpfiTp3zqnGAanUYoujuYi2-D_mIM4C8hUYRHcI"
+          alt="Monithelly Simões"
+          class="sobre-photo"
+        />
+        <span class="sobre-photo-tag">Power BI · SQL · Python · Melhoria Contínua</span>
+        <div style="display:flex; gap:10px;">
+          <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-primary" style="font-size:12px; padding:8px 18px;">LinkedIn</a>
+          <a href="https://github.com/monithelly" target="_blank" class="btn-outline" style="font-size:12px; padding:8px 18px;">GitHub</a>
         </div>
       </div>
     </div>
@@ -788,7 +819,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Monithelly</span>
+  <a href="#" style="text-decoration:none;">
+    <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#AFA9EC"/>
+      <text x="18" y="20" font-family="Cormorant Garamond,Georgia,serif" font-size="16" font-weight="400" fill="#26215C" text-anchor="middle" dominant-baseline="central">M</text>
+      <text x="44" y="15" font-family="Cormorant Garamond,Georgia,serif" font-size="19" font-weight="500" fill="#fff">Monithelly</text>
+      <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7F77DD" letter-spacing="1.4">ANALISTA DE DADOS</text>
+    </svg>
+  </a>
   <ul class="footer-links">
     <li><a href="#dashboards">Dashboards</a></li>
     <li><a href="#case">Business Case</a></li>
