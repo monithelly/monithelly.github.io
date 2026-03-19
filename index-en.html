@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monithelly Simões · Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-50: #EEEDFE;
+      --purple-100: #CECBF6;
+      --purple-200: #AFA9EC;
+      --purple-400: #7F77DD;
+      --purple-600: #534AB7;
+      --purple-800: #3C3489;
+      --purple-900: #26215C;
+      --gray-50: #F7F6F3;
+      --gray-100: #EDECE8;
+      --gray-200: #D3D1C7;
+      --gray-400: #888780;
+      --gray-700: #444441;
+      --ink: #1a1825;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAFAF8;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 4rem;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--gray-100);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo svg { height: 36px; width: auto; }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.05em;
+      color: var(--gray-400); text-decoration: none; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--purple-600); }
+
+    .lang-switch {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gray-400);
+      text-decoration: none; border: 0.5px solid var(--gray-200);
+      padding: 5px 12px; border-radius: 20px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lang-switch:hover { border-color: var(--purple-400); color: var(--purple-600); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, var(--purple-50) 0%, transparent 70%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; width: 100%; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--purple-600); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--purple-400);
+    }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 340px; gap: 5rem; align-items: center;
+    }
+
+    .hero-photo-col {
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 280px; height: 280px;
+    }
+
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border-radius: 50%;
+      border: 1.5px solid var(--purple-200);
+      opacity: 0.6;
+    }
+
+    .hero-photo {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(52px, 6vw, 80px);
+      font-weight: 400; line-height: 1.05; letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    h1 em { font-style: italic; color: var(--purple-600); }
+
+    .hero-desc {
+      font-size: 16px; color: var(--gray-400); line-height: 1.8;
+      max-width: 420px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .btn-primary {
+      background: var(--purple-600); color: #fff;
+      padding: 12px 28px; border-radius: 4px;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--purple-800); }
+
+    .btn-outline {
+      background: transparent; color: var(--purple-600);
+      padding: 12px 28px; border-radius: 4px;
+      border: 0.5px solid var(--purple-200);
+      font-size: 13px; font-weight: 400; letter-spacing: 0.03em;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--purple-600); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 4rem; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 3rem; }
+
+    .section-tag {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--purple-400);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 0.8rem;
+    }
+    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--purple-300, #AFA9EC); }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 400; line-height: 1.1;
+    }
+
+    /* ── DASHBOARDS ── */
+    #dashboards { background: #fff; border-top: 0.5px solid var(--gray-100); }
+
+    .dashboards-list { display: flex; flex-direction: column; gap: 5rem; }
+
+    .dash-item {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+
+    .dash-item.reverse { direction: rtl; }
+    .dash-item.reverse > * { direction: ltr; }
+
+    .dash-number {
+      font-family: 'Lora', serif;
+      font-size: 80px; font-weight: 400; line-height: 1;
+      color: var(--purple-50); margin-bottom: -1rem;
+      user-select: none;
+    }
+
+    .dash-tag {
+      display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; background: var(--purple-50); color: var(--purple-600);
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem;
+    }
+
+    .dash-title {
+      font-family: 'Lora', serif;
+      font-size: 30px; font-weight: 500; margin-bottom: 0.8rem; line-height: 1.2;
+    }
+
+    .dash-desc {
+      font-size: 14px; color: var(--gray-400); line-height: 1.8; margin-bottom: 1.5rem;
+    }
+
+    .dash-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+
+    .pill {
+      font-size: 11px; color: var(--purple-800);
+      background: var(--purple-50); border: 0.5px solid var(--purple-100);
+      padding: 4px 12px; border-radius: 20px; letter-spacing: 0.03em;
+    }
+
+    .dash-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--purple-600);
+      text-decoration: none; letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--purple-200);
+      padding-bottom: 2px; transition: border-color 0.2s;
+    }
+    .dash-link:hover { border-color: var(--purple-600); }
+
+    .dash-frame {
+      border-radius: 10px; overflow: hidden;
+      border: 0.5px solid var(--gray-100);
+      box-shadow: 0 4px 32px rgba(83,74,183,0.06);
+      aspect-ratio: 16/10; position: relative;
+    }
+
+    .dash-frame iframe {
+      width: 100%; height: 100%; display: block; border: none;
+    }
+
+    /* ── BUSINESS CASE ── */
+    #case { background: var(--gray-50); border-top: 0.5px solid var(--gray-100); }
+
+    .case-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+
+    .case-problem {
+      background: #fff; border: 0.5px solid var(--gray-100);
+      border-radius: 10px; padding: 1.5rem 1.8rem; margin-bottom: 1.5rem;
+      border-left: 3px solid var(--purple-400);
+    }
+
+    .case-problem-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--purple-400); margin-bottom: 0.5rem;
+    }
+
+    .case-problem p {
+      font-family: 'Lora', serif;
+      font-size: 18px; font-style: italic; color: var(--ink); line-height: 1.5;
+    }
+
+    .case-desc {
+      font-size: 14px; color: var(--gray-400); line-height: 1.8; margin-bottom: 1.5rem;
+    }
+
+    .case-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+
+    .case-results {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.8rem;
+    }
+
+    .result-card {
+      background: #fff; border: 0.5px solid var(--gray-100);
+      border-radius: 8px; padding: 14px 16px;
+    }
+
+    .result-value {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px; font-weight: 500; color: var(--purple-600); line-height: 1;
+      margin-bottom: 4px; letter-spacing: -0.01em;
+    }
+
+    .result-label { font-size: 11px; color: var(--gray-400); line-height: 1.4; }
+
+    .case-links { display: flex; gap: 12px; }
+
+    .case-visual { display: flex; flex-direction: column; gap: 12px; }
+
+    .case-step {
+      background: #fff; border: 0.5px solid var(--gray-100);
+      border-radius: 10px; padding: 16px 20px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .case-step:hover { border-color: var(--purple-200); }
+
+    .step-num {
+      font-family: 'Lora', serif;
+      font-size: 28px; font-weight: 400; color: var(--purple-200);
+      line-height: 1; flex-shrink: 0; width: 28px;
+    }
+
+    .step-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .step-desc { font-size: 12px; color: var(--gray-400); line-height: 1.6; }
+
+    /* ── APP PYTHON ── */
+    #app { background: var(--purple-900); border-top: 0.5px solid var(--purple-800); }
+
+    #app .section-tag { color: var(--purple-200); }
+    #app .section-tag::before { background: var(--purple-400); }
+    #app .section-title { color: #fff; }
+
+    .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+    .app-desc {
+      font-size: 15px; color: var(--purple-200); line-height: 1.8; margin-bottom: 2rem;
+    }
+
+    .coming-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 12px; font-weight: 400; letter-spacing: 0.06em;
+      padding: 8px 18px; border-radius: 4px; text-transform: uppercase;
+    }
+
+    .coming-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #9FE1CB;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .app-visual {
+      background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 2rem;
+    }
+
+    .app-bar { display: flex; gap: 6px; margin-bottom: 1.2rem; }
+    .app-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .app-dot.r { background: #FF6058; }
+    .app-dot.y { background: #FFBD2E; }
+    .app-dot.g { background: #29CC41; }
+
+    .code-line {
+      font-size: 12px; line-height: 2; color: var(--purple-200);
+      font-family: 'Courier New', monospace;
+    }
+    .code-kw { color: #AFA9EC; }
+    .code-fn { color: #9FE1CB; }
+    .code-cm { color: #534AB7; }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; border-top: 0.5px solid var(--gray-100); }
+
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+    .sobre-photo-wrap {
+      position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+
+    .sobre-photo {
+      width: 200px; height: 200px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 3px solid var(--purple-100);
+      display: block;
+    }
+
+    .sobre-photo-tag {
+      background: var(--purple-50); border: 0.5px solid var(--purple-100);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 12px; color: var(--purple-800); font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
+    .sobre-intro {
+      font-family: 'Lora', serif;
+      font-size: 26px; font-weight: 400; line-height: 1.5;
+      margin-bottom: 1.5rem; color: var(--ink);
+    }
+
+    .sobre-intro em { font-style: italic; color: var(--purple-600); }
+
+    .sobre-desc {
+      font-size: 14px; color: var(--gray-400); line-height: 1.9; margin-bottom: 2rem;
+    }
+
+    .skills-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 2rem;
+    }
+
+    .skill-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--gray-700);
+    }
+    .skill-item::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--purple-400); flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: var(--purple-200);
+      padding: 3rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a {
+      font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--purple-200); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+
+    .footer-copy { font-size: 12px; color: var(--purple-400); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .hero-grid, .dash-item, .dash-item.reverse,
+      .case-grid, .app-grid, .sobre-grid { grid-template-columns: 1fr; gap: 2rem; direction: ltr; }
+      .hero-photo-col { order: -1; }
+      .hero-photo-wrap, .hero-photo { width: 180px; height: 180px; }
+      .dash-frame { aspect-ratio: 16/10; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#534AB7"/>
+      <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+      <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#1a1825">Monithelly</text>
+      <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#888780" letter-spacing="1.4">DATA ANALYST</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#dashboards">Dashboards</a></li>
+    <li><a href="#case">Business Case</a></li>
+    <li><a href="#app">Python App</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" style="color: var(--purple-600); font-weight: 500;">Get in touch</a></li>
+    <li><a href="index.html" class="lang-switch">🇧🇷 PT</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Data Analyst · Continuous Improvement</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Hi, I'm<br><em>Monithelly.</em></h1>
+        <p class="hero-desc">
+          I turn data into decisions. I work with data analysis and continuous improvement, diagnosing problems, structuring analytical frameworks and delivering dashboards that drive real business impact: increasing revenue, reducing losses or improving operational efficiency.
+        </p>
+        <div class="hero-actions">
+          <a href="#dashboards" class="btn-primary">View projects</a>
+          <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-outline">Get in touch →</a>
+        </div>
+        <div style="margin-top: 1.5rem; font-size:13px; color:#888780;">
+          3 complete projects · business impact focus · analytical and operational mindset
+        </div>
+      </div>
+      <div class="hero-photo-col">
+        <div class="hero-photo-wrap">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4E03AQEsVaodzpo2CQ/profile-displayphoto-scale_400_400/B4EZsniO55GoAg-/0/1765894844830?e=1775692800&v=beta&t=JnLmJpfiTp3zqnGAanUYoujuYi2-D_mIM4C8hUYRHcI"
+            alt="Monithelly Simões"
+            class="hero-photo"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARDS -->
+<section id="dashboards">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">Power BI</div>
+      <h2 class="section-title">Dashboards</h2>
+    </div>
+
+    <div class="dashboards-list">
+
+      <!-- 1. Tech Logística -->
+      <div class="dash-item reveal">
+        <div class="dash-meta">
+          <div class="dash-number">01</div>
+          <span class="dash-tag">Logistics</span>
+          <h3 class="dash-title">Tech Logistics Dashboard</h3>
+          <p class="dash-desc">
+            A logistics management project focused on operational efficiency. The analysis surfaces margin losses, service level bottlenecks and stockout issues. I designed the data model and KPIs with practical decision-making in mind, not just visualization.
+          </p>
+          <div class="dash-pills">
+            <span class="pill">Revenue &amp; Margin</span>
+            <span class="pill">OTD</span>
+            <span class="pill">Stockout Rate</span>
+            <span class="pill">Interactive Tooltips</span>
+          </div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiOTJkMGU0MmUtMjA0Ni00NTg1LTk5ODQtYjhlNmE5OWVkOWU2IiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" target="_blank" class="dash-link">Open in Power BI →</a>
+        </div>
+        <div class="dash-frame">
+          <iframe title="TechLog Logistics Dashboard"
+            src="https://app.powerbi.com/view?r=eyJrIjoiOTJkMGU0MmUtMjA0Ni00NTg1LTk5ODQtYjhlNmE5OWVkOWU2IiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- 2. Sales Dashboard -->
+      <div class="dash-item reverse reveal">
+        <div class="dash-meta">
+          <div class="dash-number">02</div>
+          <span class="dash-tag">Sales</span>
+          <h3 class="dash-title">Sales Dashboard</h3>
+          <p class="dash-desc">
+            A commercial performance analysis focused on revenue quality. The dashboard exposes the gap between sales volume and profitability, enabling more strategic decisions around product mix and individual rep performance.
+          </p>
+          <div class="dash-pills">
+            <span class="pill">Conversion Funnel</span>
+            <span class="pill">Product Ranking</span>
+            <span class="pill">Rep Performance</span>
+            <span class="pill">YoY Growth</span>
+            <span class="pill">Interactive Tooltips</span>
+          </div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiMjE4Y2I0NWItYjgzMC00NzVjLWJiYmQtYzYwZjY3ZGZmMWEzIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" target="_blank" class="dash-link">Open in Power BI →</a>
+        </div>
+        <div class="dash-frame">
+          <iframe title="Sales Dashboard"
+            src="https://app.powerbi.com/view?r=eyJrIjoiMjE4Y2I0NWItYjgzMC00NzVjLWJiYmQtYzYwZjY3ZGZmMWEzIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- 3. CS Analytics -->
+      <div class="dash-item reveal">
+        <div class="dash-meta">
+          <div class="dash-number">03</div>
+          <span class="dash-tag">Customer Success · SaaS</span>
+          <h3 class="dash-title">CS Analytics</h3>
+          <p class="dash-desc">
+            A Customer Success project built around retention and revenue predictability. The analysis anticipates churn risk and organizes the customer portfolio by health and engagement, enabling proactive action before problems escalate.
+          </p>
+          <div class="dash-pills">
+            <span class="pill">ARR &amp; MRR</span>
+            <span class="pill">Health Score</span>
+            <span class="pill">Churn Rate</span>
+            <span class="pill">Renewal Pipeline</span>
+            <span class="pill">SaaS Segmentation</span>
+          </div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" target="_blank" class="dash-link">Open in Power BI →</a>
+        </div>
+        <div class="dash-frame">
+          <iframe title="CS Analytics"
+            src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS CASE -->
+<section id="case">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">GitHub · Business Case</div>
+      <h2 class="section-title">Distrimax</h2>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-meta reveal">
+        <div class="case-problem">
+          <div class="case-problem-label">The Paradox</div>
+          <p>"How can a company have excess inventory and lost sales at the same time?"</p>
+        </div>
+
+        <p class="case-desc">
+          This case simulates a real business problem: overstock coexisting with lost sales. The analysis was structured to identify root causes, quantify financial impact and propose a data-driven solution. More than a dashboard, it is a full diagnostic with strategic direction.
+        </p>
+
+        <div class="case-results">
+          <div class="result-card">
+            <div class="result-value">$194M</div>
+            <div class="result-label">Uncaptured revenue potential identified</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">78%</div>
+            <div class="result-label">Recoverable with a revised replenishment policy</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">1,363d</div>
+            <div class="result-label">Excess stock coverage in low-priority SKUs</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">↓23%</div>
+            <div class="result-label">Projected reduction in tied-up capital</div>
+          </div>
+        </div>
+
+        <div class="case-tools">
+          <span class="pill">SQL Window Functions</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">ABC Analysis</span>
+          <span class="pill">Ishikawa</span>
+          <span class="pill">GUT Matrix</span>
+        </div>
+
+        <div class="case-links">
+          <a href="https://github.com/monithelly/distrimax-case" target="_blank" class="btn-primary">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="case-visual reveal">
+        <div class="case-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Data Modeling</div>
+            <div class="step-desc">Fictional dataset with real-world structure: 4 tables and 15,900 weekly inventory records by SKU and region.</div>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">SQL Analysis</div>
+            <div class="step-desc">4 documented queries: ABC curve, stockout ranking, lost revenue and comparison against the ideal replenishment policy. Used window functions, CASE WHEN and aggregations.</div>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Diagnosis</div>
+            <div class="step-desc">Ishikawa for root cause and GUT Matrix for prioritization. Class A items had an average of 10 days of coverage against a target of 30 to 45 days.</div>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Power BI Dashboard</div>
+            <div class="step-desc">Two pages: problem diagnosis and impact projection under the new ABC-based replenishment policy.</div>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Solution and Impact</div>
+            <div class="step-desc">Differentiated replenishment policy by class A, B and C with review frequency, safety stock and projected financial impact.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PYTHON APP -->
+<section id="app">
+  <div class="section-inner">
+    <div class="app-grid">
+      <div class="reveal">
+        <div class="section-tag">In Development</div>
+        <h2 class="section-title" style="color:#fff; margin-bottom:1.5rem;">Python App</h2>
+        <p class="app-desc">
+          An ongoing project combining data analysis and application development with Python. More details coming soon.
+        </p>
+        <div class="coming-badge">
+          <div class="coming-dot"></div>
+          In development · Coming soon
+        </div>
+      </div>
+      <div class="app-visual reveal">
+        <div class="app-bar">
+          <div class="app-dot r"></div>
+          <div class="app-dot y"></div>
+          <div class="app-dot g"></div>
+        </div>
+        <div class="code-line"><span class="code-cm"># Monithelly · Python App</span></div>
+        <div class="code-line"><span class="code-kw">import</span> pandas <span class="code-kw">as</span> pd</div>
+        <div class="code-line"><span class="code-kw">import</span> streamlit <span class="code-kw">as</span> st</div>
+        <div class="code-line"></div>
+        <div class="code-line"><span class="code-fn">def</span> <span class="code-fn">load_data</span>(path):</div>
+        <div class="code-line">&nbsp;&nbsp;df = pd.<span class="code-fn">read_csv</span>(path)</div>
+        <div class="code-line">&nbsp;&nbsp;<span class="code-kw">return</span> df</div>
+        <div class="code-line"></div>
+        <div class="code-line"><span class="code-cm"># 🚧 Under construction...</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <div class="section-tag" style="margin-bottom:1rem;">About</div>
+        <p class="sobre-intro">
+          I bridge data and business. My focus is not just building dashboards, but understanding problems, structuring analyses and <em>delivering clear direction for decision-making.</em>
+        </p>
+        <p class="sobre-desc">
+          My background spans KPIs, data analysis and continuous improvement. This portfolio was built around simulating real business challenges and demonstrating how data analysis can generate measurable financial and operational impact.
+        </p>
+        <div class="skills-list">
+          <div class="skill-item">Power BI</div>
+          <div class="skill-item">SQL</div>
+          <div class="skill-item">Python</div>
+          <div class="skill-item">DAX</div>
+          <div class="skill-item">Excel</div>
+          <div class="skill-item">Business Analysis</div>
+          <div class="skill-item">Continuous Improvement</div>
+          <div class="skill-item">Data Storytelling</div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-primary">LinkedIn</a>
+          <a href="https://github.com/monithelly" target="_blank" class="btn-outline">GitHub</a>
+        </div>
+      </div>
+      <div class="sobre-photo-wrap reveal">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D4E03AQEsVaodzpo2CQ/profile-displayphoto-scale_400_400/B4EZsniO55GoAg-/0/1765894844830?e=1775692800&v=beta&t=JnLmJpfiTp3zqnGAanUYoujuYi2-D_mIM4C8hUYRHcI"
+          alt="Monithelly Simões"
+          class="sobre-photo"
+        />
+        <span class="sobre-photo-tag">Power BI · SQL · Python · Continuous Improvement</span>
+        <div style="display:flex; gap:10px;">
+          <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-primary" style="font-size:12px; padding:8px 18px;">LinkedIn</a>
+          <a href="https://github.com/monithelly" target="_blank" class="btn-outline" style="font-size:12px; padding:8px 18px;">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" style="text-decoration:none;">
+    <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#AFA9EC"/>
+      <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#26215C" text-anchor="middle" dominant-baseline="central">M</text>
+      <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#fff">Monithelly</text>
+      <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7F77DD" letter-spacing="1.4">DATA ANALYST</text>
+    </svg>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#dashboards">Dashboards</a></li>
+    <li><a href="#case">Business Case</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank">LinkedIn</a></li>
+    <li><a href="index.html">🇧🇷 PT</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Monithelly Simões</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.08) + 's';
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
