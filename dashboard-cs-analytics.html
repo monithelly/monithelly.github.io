@@ -1,509 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS Analytics | Monithelly Simões</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --purple-50: #f3f0ff;
-      --purple-100: #dfd8ff;
-      --purple-200: #c5b9ff;
-      --purple-400: #8b78ea;
-      --purple-600: #5a49c6;
-      --purple-800: #3b2f8e;
-      --gray-50: #fafaf8;
-      --gray-100: #ece9e2;
-      --gray-200: #d9d4ca;
-      --gray-400: #7d7a73;
-      --gray-700: #3f3c38;
-      --ink: #191724;
-      --white: #ffffff;
-      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--gray-50);
-      color: var(--ink);
-      overflow-x: hidden;
+      background: #fafaf8;
+      margin: 0;
+      color: #191724;
     }
-
-    a { color: inherit; }
 
     nav {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
+      width: 100%;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding: 1rem 3rem;
-      background: rgba(250, 250, 248, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-logo svg {
-      width: 208px;
-      height: auto;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 13px;
-      color: var(--gray-400);
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--purple-600);
-    }
-
-    .lang-switch {
-      border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      padding: 0.45rem 0.85rem;
+      background: rgba(250,250,248,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
     }
 
     .hero {
-      padding: 9rem 3rem 4.5rem;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--gray-100);
+      padding: 9rem 3rem 3rem;
       background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 78% 25%, rgba(90, 73, 198, 0.12), transparent 28%),
-        radial-gradient(circle at 15% 80%, rgba(139, 120, 234, 0.10), transparent 30%);
-      pointer-events: none;
-    }
-
-    .hero-inner,
-    .section-inner {
-      max-width: 1160px;
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--purple-600);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 1px;
-      background: var(--purple-400);
     }
 
     h1 {
       font-family: 'Lora', serif;
-      font-size: clamp(3rem, 7vw, 5rem);
-      line-height: 0.98;
+      font-size: 3.5rem;
       font-weight: 400;
+      color: #5a49c6;
       margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-    }
-
-    h1 em {
-      color: var(--purple-600);
-      font-style: italic;
-    }
-
-    .hero-copy {
-      max-width: 760px;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--gray-700);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .hero-actions a {
-      text-decoration: none;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--gray-100);
-      background: rgba(255,255,255,0.7);
-      color: var(--gray-700);
-      font-size: 0.93rem;
-      transition: 0.2s ease;
-    }
-
-    .hero-actions a:hover {
-      border-color: var(--purple-200);
-      color: var(--purple-600);
     }
 
     section {
-      padding: 4.5rem 3rem;
-    }
-
-    .section-kicker {
-      color: var(--purple-400);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-title {
-      font-family: 'Lora', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      line-height: 1.05;
-      margin-bottom: 1rem;
-    }
-
-    .section-text {
-      max-width: 780px;
-      color: var(--gray-700);
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 28px;
-      padding: 1.6rem;
-      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
-    }
-
-    .card h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 0.9rem;
-    }
-
-    .card p {
-      color: var(--gray-700);
-      line-height: 1.85;
-      font-size: 0.98rem;
-    }
-
-    .topics {
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .topic {
-      padding: 1rem 1.1rem;
-      border: 1px solid var(--gray-100);
-      border-radius: 20px;
-      background: #fff;
-    }
-
-    .topic strong {
-      display: block;
-      color: var(--ink);
-      margin-bottom: 0.35rem;
-      font-weight: 500;
-    }
-
-    .topic span {
-      color: var(--gray-700);
-      line-height: 1.7;
-      font-size: 0.96rem;
-    }
-
-    .insights-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .insight-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 26px;
-      padding: 1.4rem;
-      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
-    }
-
-    .insight-card h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-    }
-
-    .insight-card p {
-      color: var(--gray-700);
-      line-height: 1.85;
-      font-size: 0.97rem;
-    }
-
-    .embed-card {
-      margin-top: 2rem;
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 28px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
+      padding: 3rem;
     }
 
     iframe {
       width: 100%;
-      height: 760px;
-      border: 0;
+      height: 650px;
       border-radius: 20px;
-      display: block;
-      background: #fff;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
     }
 
-    .note {
-      margin-top: 1rem;
-      color: var(--gray-400);
-      font-size: 0.95rem;
-      line-height: 1.8;
+    .text {
+      max-width: 750px;
+      line-height: 1.9;
+      color: #3f3c38;
+      margin-bottom: 1.5rem;
     }
 
-    .back-link {
-      display: inline-flex;
+    .kicker {
+      color: #8b78ea;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .back {
+      display: inline-block;
       margin-top: 2rem;
+      color: #5a49c6;
       text-decoration: none;
-      color: var(--purple-600);
-      font-size: 0.95rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 980px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
-      .hero, section { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .hero { padding-top: 7.5rem; }
-      .two-columns,
-      .insights-grid {
-        grid-template-columns: 1fr;
-      }
-      iframe {
-        height: 560px;
-      }
     }
   </style>
 </head>
+
 <body>
 
-  <nav>
-    <a href="index.html#home" class="nav-logo" aria-label="Início">
-      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
-        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
-        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
-        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
-      </svg>
-    </a>
+<nav>
+  <div>Monithelly</div>
+  <a href="dashboards.html" class="back">← Voltar</a>
+</nav>
 
-    <ul class="nav-links">
-      <li><a href="https://monithelly.github.io/">Home</a></li>
-      <li><a href="dashboards.html" class="active">Projetos</a></li>
-      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
-      <li><a href="dashboard-cs-analytics-en.html" class="lang-switch">EN</a></li>
-    </ul>
-  </nav>
+<div class="hero">
+  <div class="container">
+    <h1>CS Analytics</h1>
+  </div>
+</div>
 
-  <section class="hero">
-    <div class="hero-inner reveal">
-      <div class="eyebrow">Projetos · Power BI</div>
-      <h1><em>CS Analytics</em></h1>
-      <p class="hero-copy">
-        Esse dashboard foi pensado para transformar a rotina de Customer Success em uma leitura mais clara, visual e útil para decisão. A proposta aqui foi reunir os principais indicadores da carteira em uma visão que ajudasse a entender, com mais rapidez, o que está saudável, o que pede atenção e onde existe maior risco de perda.
-      </p>
-      <div class="hero-actions">
-        <a href="#visao-do-projeto">Visão do projeto</a>
-        <a href="#insights">Análise e insights</a>
-        <a href="#painel">Ver dashboard</a>
-      </div>
-    </div>
-  </section>
+<section>
+  <div class="container">
 
-  <section id="visao-do-projeto">
-    <div class="section-inner">
-      <div class="section-kicker reveal">Contexto</div>
-      <h2 class="section-title reveal">Uma leitura mais prática da carteira de clientes</h2>
-      <p class="section-text reveal">
-        Em Customer Success, acompanhar números isolados nem sempre resolve. O que faz diferença é conseguir ler o contexto da carteira e entender como os indicadores se conectam. Foi com essa ideia que desenvolvi esse painel, trazendo métricas como ARR, MRR, clientes ativos, health score, renovações próximas e churn estimado em uma mesma navegação.
-      </p>
+    <!-- DASHBOARD PRIMEIRO -->
+    <iframe
+      src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
+      allowFullScreen>
+    </iframe>
 
-      <div class="two-columns">
-        <div class="card reveal">
-          <h3>O que eu quis construir aqui</h3>
-          <p>
-            Minha intenção foi sair daquela leitura mais engessada e montar um dashboard que realmente ajudasse a acompanhar a saúde da base. Quis deixar a visão executiva mais direta, sem perder a profundidade. Por isso, organizei o painel de um jeito que primeiro apresenta os números mais importantes e depois aprofunda em temas como status da carteira, ticket por perfil de cliente, pipeline de renovações e distribuição por segmento.
-          </p>
-        </div>
+    <div class="kicker">Sobre o projeto</div>
 
-        <div class="card reveal">
-          <h3>O que esse painel acompanha</h3>
-          <div class="topics">
-            <div class="topic">
-              <strong>Saúde da carteira</strong>
-              <span>Mostra a divisão entre clientes saudáveis, em atenção e em risco.</span>
-            </div>
-            <div class="topic">
-              <strong>Receita recorrente</strong>
-              <span>Ajuda a visualizar como o MRR está distribuído por status de saúde.</span>
-            </div>
-            <div class="topic">
-              <strong>Renovações próximas</strong>
-              <span>Traz foco para o que está chegando nos próximos 90 dias.</span>
-            </div>
-            <div class="topic">
-              <strong>Segmentação da base</strong>
-              <span>Permite entender melhor o perfil dos clientes e a concentração por segmento.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <p class="text">
+      Em Customer Success, acompanhar números isolados nem sempre resolve. O que faz diferença é conseguir ler o contexto da carteira e entender como os indicadores se conectam. Foi com essa ideia que desenvolvi esse painel, reunindo métricas como ARR, MRR, clientes ativos, health score, renovações próximas e churn estimado em uma mesma navegação.
+    </p>
 
-  <section id="insights">
-    <div class="section-inner">
-      <div class="section-kicker reveal">Análise</div>
-      <h2 class="section-title reveal">O que esse dashboard ajuda a enxergar</h2>
-      <p class="section-text reveal">
-        Um ponto que eu gosto nesse projeto é que ele não fica preso só no número principal. Ele permite explorar a carteira com mais contexto. Como o dashboard tem filtros e tooltips, a leitura fica mais rica e mais natural, porque dá para aprofundar a análise sem poluir a tela. Isso ajuda bastante quando a ideia é entender o comportamento da base e não apenas acompanhar um resultado solto.
-      </p>
+    <p class="text">
+      A ideia aqui foi deixar a leitura mais direta e útil no dia a dia. Primeiro você bate o olho nos principais números, depois consegue explorar com mais calma o que está por trás deles. O painel mostra a saúde da carteira, como a receita está distribuída, o que está próximo de renovar e como os clientes se distribuem por segmento.
+    </p>
 
-      <div class="insights-grid">
-        <div class="insight-card reveal">
-          <h3>Saúde da base</h3>
-          <p>
-            A divisão visual entre clientes saudáveis, em atenção e em risco facilita muito a priorização. Em vez de olhar a carteira como um bloco único, o painel deixa mais claro onde estão os grupos que precisam de acompanhamento mais próximo e onde existe espaço para retenção preventiva.
-          </p>
-        </div>
+    <div class="kicker">Análise</div>
 
-        <div class="insight-card reveal">
-          <h3>Receita com mais contexto</h3>
-          <p>
-            Quando o MRR aparece ligado ao status de saúde, a análise fica mais útil para o negócio. Não é só saber quanto a carteira gera, mas entender quanto dessa receita está mais protegida e quanto pode estar exposta. Esse tipo de leitura ajuda a dar mais peso para ações de relacionamento e renovação.
-          </p>
-        </div>
+    <p class="text">
+      O que eu achei mais interessante nesse dashboard é que ele permite uma leitura mais natural da base. Não fica só em acompanhar indicador, dá pra entender o que está acontecendo de fato. Quando você cruza saúde da carteira com receita, por exemplo, já começa a enxergar onde existe mais risco ou mais estabilidade.
+    </p>
 
-        <div class="insight-card reveal">
-          <h3>Renovação com foco</h3>
-          <p>
-            O bloco de renovações dos próximos 90 dias ajuda a trazer urgência para o que realmente está no radar. Em uma rotina de CS, esse recorte faz diferença porque organiza a atenção do time e evita que oportunidades ou riscos passem despercebidos.
-          </p>
-        </div>
-      </div>
+    <p class="text">
+      A parte de renovações ajuda bastante porque traz foco para o curto prazo. Em vez de olhar tudo ao mesmo tempo, você consegue direcionar atenção para o que realmente precisa de ação agora.
+    </p>
 
-      <div class="two-columns">
-        <div class="card reveal">
-          <h3>Leitura por segmento</h3>
-          <p>
-            Outro ponto interessante é a distribuição dos clientes por segmento. Essa visualização ajuda a perceber onde a base está mais concentrada e pode abrir boas perguntas de negócio. Existe algum segmento com maior volume e menor health score? Existe algum perfil com ticket mais forte e maior risco? Esse tipo de caminho analítico fica mais acessível quando o painel organiza bem a informação.
-          </p>
-        </div>
+    <p class="text">
+      O painel também permite uma exploração mais livre dos dados. A navegação é simples e direta, o que ajuda bastante no dia a dia para entender rapidamente o que está acontecendo na base.
+    </p>
 
-        <div class="card reveal">
-          <h3>Por que os tooltips ajudam</h3>
-          <p>
-            Os tooltips entram como um detalhe que melhora bastante a experiência. Eles deixam a navegação mais viva e ajudam a aprofundar a leitura sem carregar o layout com excesso de informação. Na prática, isso torna o dashboard mais agradável de usar e mais eficiente para quem quer investigar um ponto específico com mais calma.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="painel">
-    <div class="section-inner">
-      <div class="section-kicker reveal">Dashboard</div>
-      <h2 class="section-title reveal">Visualização interativa</h2>
-      <p class="section-text reveal">
-        Abaixo está o painel incorporado. A ideia é justamente permitir uma navegação mais livre, com filtros e detalhes que ajudam a aprofundar a leitura da carteira.
-      </p>
-
-      <div class="embed-card reveal">
-        <iframe
-          title="CS Analytics"
-          src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
-          allowFullScreen="true">
-        </iframe>
-      </div>
-
-      <p class="note reveal">
-        Esse projeto foi desenvolvido com foco em clareza visual, leitura de negócio e interação. Mais do que acompanhar números, a proposta foi construir uma visão que ajudasse a priorizar ações dentro da operação de Customer Success.
-      </p>
-
-      <a href="dashboards.html" class="back-link reveal">← Voltar para dashboards</a>
-    </div>
-  </section>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-  </script>
 </body>
 </html>
