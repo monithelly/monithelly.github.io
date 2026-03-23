@@ -3,96 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboards · Monithelly</title>
+  <title>Dashboards | Monithelly Simões</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <!-- fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <style>
     body {
       font-family: 'DM Sans', sans-serif;
       background: #fafaf8;
       margin: 0;
-      color: #1a1825;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Lora', serif;
+      color: #191724;
     }
 
     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(250,250,248,0.9);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      padding: 1rem 3rem;
       border-bottom: 1px solid #eee;
+      z-index: 10;
     }
 
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 7rem 2rem 4rem;
     }
 
-    .header {
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #7d7a73;
       margin-bottom: 3rem;
     }
 
-    .header h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .nav-projects {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
     }
 
-    .header p {
-      color: #666;
-      max-width: 500px;
-      line-height: 1.6;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .card {
-      border: 1px solid #eee;
-      border-radius: 14px;
-      overflow: hidden;
+    .nav-projects a {
       text-decoration: none;
-      color: inherit;
-      background: #fff;
-      transition: transform 0.2s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-size: 0.9rem;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
+    .dashboard {
+      margin-bottom: 4rem;
     }
 
-    .card img {
+    .dashboard h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    iframe {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      height: 420px;
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
     }
 
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .tag {
-      font-size: 11px;
-      color: #7f77dd;
-      margin-bottom: 6px;
-      text-transform: uppercase;
+    .back {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #5a49c6;
     }
 
   </style>
@@ -101,51 +91,40 @@
 <body>
 
 <nav>
-  <div><strong>Monithelly</strong></div>
-  <div>
-    <a href="index.html">← Voltar</a>
-  </div>
+  <div>Monithelly</div>
+  <a href="index.html" class="back">← Voltar</a>
 </nav>
 
 <div class="container">
 
-  <div class="header">
-    <h1>Dashboards</h1>
-    <p>Painéis desenvolvidos em Power BI com foco em negócio, leitura clara e apoio à tomada de decisão.</p>
+  <h1>Dashboards</h1>
+  <p class="subtitle">
+    Painéis desenvolvidos em Power BI com foco em negócio, leitura clara e apoio à decisão.
+  </p>
+
+  <!-- navegação entre projetos -->
+  <div class="nav-projects">
+    <a href="#cs">CS Analytics</a>
+    <a href="#sales">Sales Dashboard</a>
+    <a href="#logistica">Tech Logística</a>
   </div>
 
-  <div class="grid">
+  <!-- CS ANALYTICS -->
+  <div class="dashboard" id="cs">
+    <h2>CS Analytics</h2>
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
+  </div>
 
-    <!-- Projeto 1 -->
-    <a class="card" href="dashboard-logistica.html">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
-      <div class="card-content">
-        <div class="tag">Logística</div>
-        <h3>Tech Logística</h3>
-        <p>Foco em eficiência operacional, margem e nível de serviço.</p>
-      </div>
-    </a>
+  <!-- SALES -->
+  <div class="dashboard" id="sales">
+    <h2>Sales Dashboard</h2>
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjE4Y2I0NWItYjgzMC00NzVjLWJiYmQtYzYwZjY3ZGZmMWEzIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
+  </div>
 
-    <!-- Projeto 2 -->
-    <a class="card" href="dashboard-vendas.html">
-      <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284">
-      <div class="card-content">
-        <div class="tag">Vendas</div>
-        <h3>Performance de Vendas</h3>
-        <p>Análise de receita, margem e performance comercial.</p>
-      </div>
-    </a>
-
-    <!-- Projeto 3 -->
-    <a class="card" href="dashboard-cs.html">
-      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692">
-      <div class="card-content">
-        <div class="tag">SaaS</div>
-        <h3>Customer Success</h3>
-        <p>Churn, health score e previsibilidade de receita.</p>
-      </div>
-    </a>
-
+  <!-- LOGISTICA -->
+  <div class="dashboard" id="logistica">
+    <h2>Tech Logística</h2>
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOTJkMGU0MmUtMjA0Ni00NTg1LTk5ODQtYjhlNmE5OWVkOWU2IiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
   </div>
 
 </div>
