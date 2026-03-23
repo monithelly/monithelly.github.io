@@ -1,133 +1,343 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboards | Monithelly Simões</title>
-
-  <!-- fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-
   <style>
+    :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-200: #c5b9ff;
+      --purple-400: #8b78ea;
+      --purple-600: #5a49c6;
+      --purple-800: #3b2f8e;
+      --gray-50: #fafaf8;
+      --gray-100: #ece9e2;
+      --gray-200: #d9d4ca;
+      --gray-400: #7d7a73;
+      --gray-700: #3f3c38;
+      --ink: #191724;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: #fafaf8;
-      margin: 0;
-      color: #191724;
+      background: var(--gray-50);
+      color: var(--ink);
+      overflow-x: hidden;
     }
+    a { color: inherit; }
 
     nav {
       position: fixed;
       top: 0;
-      width: 100%;
-      background: rgba(250,250,248,0.9);
-      backdrop-filter: blur(10px);
+      left: 0;
+      right: 0;
+      z-index: 100;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 1rem 3rem;
-      border-bottom: 1px solid #eee;
-      z-index: 10;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
     }
 
-    .container {
-      max-width: 1100px;
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo svg { width: 208px; height: auto; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--gray-400);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--purple-600); }
+
+    .lang-switch {
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+    }
+
+    .hero {
+      padding: 9rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gray-100);
+      background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 78% 25%, rgba(90, 73, 198, 0.12), transparent 28%),
+                  radial-gradient(circle at 15% 80%, rgba(139, 120, 234, 0.10), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 7rem 2rem 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--purple-600);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--purple-400);
     }
 
     h1 {
       font-family: 'Lora', serif;
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.03em;
     }
 
-    .subtitle {
-      color: #7d7a73;
-      margin-bottom: 3rem;
+    h1 em {
+      color: var(--purple-600);
+      font-style: italic;
     }
 
-    .nav-projects {
+    .hero-copy {
+      max-width: 720px;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--gray-700);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-copy strong { color: var(--ink); }
+
+    section { padding: 4.5rem 3rem; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+
+    .section-kicker {
+      color: var(--purple-400);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+
+    .projects-nav {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 3rem;
       flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
     }
 
-    .nav-projects a {
+    .projects-nav a {
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      padding: 0.55rem 0.9rem;
       border-radius: 999px;
-      border: 1px solid #ddd;
-      font-size: 0.9rem;
+      border: 1px solid var(--gray-100);
+      color: var(--gray-700);
+      background: rgba(255,255,255,0.6);
+      font-size: 0.93rem;
+      transition: 0.2s ease;
     }
 
-    .dashboard {
-      margin-bottom: 4rem;
+    .projects-nav a:hover {
+      border-color: var(--purple-200);
+      color: var(--purple-600);
     }
 
-    .dashboard h2 {
-      font-family: 'Lora', serif;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem;
+      margin-top: 2rem;
     }
 
-    iframe {
-      width: 100%;
-      height: 420px;
-      border-radius: 16px;
-      border: none;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-    }
-
-    .back {
+    .dashboard-card {
+      display: block;
       text-decoration: none;
-      font-size: 0.9rem;
-      color: #5a49c6;
+      background: #fff;
+      border: 1px solid var(--gray-100);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
+      transition: 0.25s ease;
     }
 
+    .dashboard-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--purple-200);
+      box-shadow: var(--shadow);
+    }
+
+    .dashboard-thumb-wrap {
+      padding: 1rem 1rem 0;
+    }
+
+    .dashboard-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: 20px;
+      border: 1px solid var(--gray-100);
+      display: block;
+      background: #fff;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .dashboard-body {
+      padding: 1.2rem 1.2rem 1.4rem;
+    }
+
+    .dashboard-title {
+      font-family: 'Lora', serif;
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .dashboard-year {
+      color: var(--gray-400);
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      border-top: 1px solid var(--gray-100);
+      color: var(--gray-400);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 7.5rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-
 <body>
+  <nav>
+    <a href="index.html#home" class="nav-logo" aria-label="Início">
+      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
+        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
+        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://monithelly.github.io/">Home</a></li>
+      <li><a href="index.html#categorias" class="active">Projetos</a></li>
+      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
+      <li><a href="dashboards-en.html" class="lang-switch">EN</a></li>
+    </ul>
+  </nav>
 
-<nav>
-  <div>Monithelly</div>
-  <a href="index.html" class="back">← Voltar</a>
-</nav>
+  <section class="hero">
+    <div class="hero-inner reveal">
+      <div class="eyebrow">Projetos · Power BI</div>
+      <h1><em>Dashboards</em></h1>
+      <div class="projects-nav">
+        <a href="dashboard-cs-analytics.html">CS Analytics</a>
+        <a href="dashboard-sales.html">Sales Dashboard</a>
+        <a href="dashboard-tech-logistica.html">Tech Logística</a>
+      </div>
+    </div>
+  </section>
 
-<div class="container">
+  <section>
+    <div class="section-inner">
+      <div class="section-kicker reveal">Dashboards</div>
+      <div class="grid">
+        <a class="dashboard-card reveal" href="dashboard-cs-analytics.html">
+          <div class="dashboard-thumb-wrap">
+            <img class="dashboard-thumb" src="/mnt/data/e60a860f-7ed5-453c-95ca-24d5d543a5e6.png" alt="Prévia do dashboard CS Analytics">
+          </div>
+          <div class="dashboard-body">
+            <div class="dashboard-title">CS Analytics</div>
+            <div class="dashboard-year">Power BI</div>
+          </div>
+        </a>
 
-  <h1>Dashboards</h1>
-  <p class="subtitle">
-    Painéis desenvolvidos em Power BI com foco em negócio, leitura clara e apoio à decisão.
-  </p>
+        <a class="dashboard-card reveal" href="dashboard-sales.html">
+          <div class="dashboard-thumb-wrap">
+            <img class="dashboard-thumb" src="/mnt/data/d379c23d-5dc4-4ea6-a6fa-03b8480484c7.png" alt="Prévia do dashboard Sales Dashboard">
+          </div>
+          <div class="dashboard-body">
+            <div class="dashboard-title">Sales Dashboard</div>
+            <div class="dashboard-year">Power BI</div>
+          </div>
+        </a>
 
-  <!-- navegação entre projetos -->
-  <div class="nav-projects">
-    <a href="#cs">CS Analytics</a>
-    <a href="#sales">Sales Dashboard</a>
-    <a href="#logistica">Tech Logística</a>
-  </div>
+        <a class="dashboard-card reveal" href="dashboard-tech-logistica.html">
+          <div class="dashboard-thumb-wrap">
+            <img class="dashboard-thumb" src="/mnt/data/f088682a-6a43-40cf-94e3-5dbe243137b5.png" alt="Prévia do dashboard Tech Logística">
+          </div>
+          <div class="dashboard-body">
+            <div class="dashboard-title">Tech Logística</div>
+            <div class="dashboard-year">Power BI</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- CS ANALYTICS -->
-  <div class="dashboard" id="cs">
-    <h2>CS Analytics</h2>
-    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
-  </div>
+  
 
-  <!-- SALES -->
-  <div class="dashboard" id="sales">
-    <h2>Sales Dashboard</h2>
-    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjE4Y2I0NWItYjgzMC00NzVjLWJiYmQtYzYwZjY3ZGZmMWEzIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
-  </div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
 
-  <!-- LOGISTICA -->
-  <div class="dashboard" id="logistica">
-    <h2>Tech Logística</h2>
-    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOTJkMGU0MmUtMjA0Ni00NTg1LTk5ODQtYjhlNmE5OWVkOWU2IiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9" allowFullScreen></iframe>
-  </div>
-
-</div>
-
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
