@@ -110,13 +110,21 @@
 <body>
 
 <nav>
-  <div>Monithelly</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="dashboards.html" class="active">Projetos</a>
-    <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank">Falar comigo</a>
-    <a href="#">EN</a>
-  </div>
+  <a href="index.html" class="nav-logo" aria-label="Início">
+    <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
+      <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+      <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
+      <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
+    </svg>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#categorias" class="active">Projetos</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank">Falar comigo</a></li>
+    <li><a href="index-en.html" class="lang-switch">EN</a></li>
+  </ul>
 </nav>
 
 <div class="hero">
@@ -160,25 +168,23 @@
   </div>
 </section>
 
-<footer style="
-  margin-top: 4rem;
-  padding: 2rem 3rem;
-  border-top: 1px solid #ece9e2;
-  font-size: 0.9rem;
-  color: #7d7a73;
-">
-  <div style="max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-    
+<footer>
+  <div class="footer-inner">
     <div>
-      © 2026 Monithelly Simões
+      <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">
+        Monithelly Simões
+      </div>
+      <div class="muted">
+        Portfólio de dados com foco em análise, melhoria e impacto no negócio
+      </div>
     </div>
 
-    <div style="display:flex; gap:1.5rem;">
-      <a href="index.html" style="text-decoration:none; color:#7d7a73;">Home</a>
-      <a href="dashboards.html" style="text-decoration:none; color:#7d7a73;">Projetos</a>
-      <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" style="text-decoration:none; color:#7d7a73;">LinkedIn</a>
+    <div class="footer-links">
+      <a href="index.html#categorias">Projetos</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index-en.html">English version</a>
+      <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
-
   </div>
 </footer>
   
