@@ -37,8 +37,6 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; }
-
     nav {
       position: fixed;
       top: 0;
@@ -54,17 +52,6 @@
       border-bottom: 1px solid rgba(0,0,0,0.04);
     }
 
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-logo svg {
-      width: 208px;
-      height: auto;
-    }
-
     .nav-links {
       list-style: none;
       display: flex;
@@ -76,18 +63,6 @@
       text-decoration: none;
       font-size: 13px;
       color: var(--gray-400);
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--purple-600);
-    }
-
-    .lang-switch {
-      border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      padding: 0.45rem 0.85rem;
     }
 
     .hero {
@@ -116,14 +91,12 @@
       font-weight: 400;
       color: var(--purple-600);
       margin-bottom: 1rem;
-      letter-spacing: -0.03em;
     }
 
     .intro {
       max-width: 760px;
       line-height: 1.9;
       color: var(--gray-700);
-      font-size: 1.05rem;
     }
 
     section {
@@ -131,9 +104,8 @@
     }
 
     .content {
-      max-width: 760px;
+      max-width: 680px;
       margin: 0 auto;
-      text-align: left;
     }
 
     .image-wrap {
@@ -146,8 +118,6 @@
       border-radius: 22px;
       box-shadow: var(--shadow);
       border: 1px solid var(--gray-100);
-      background: #fff;
-      display: block;
     }
 
     .kicker {
@@ -155,110 +125,39 @@
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 1rem;
+      margin: 2rem 0 1rem;
     }
 
     .text {
-      line-height: 1.95;
+      line-height: 1.85;
       color: var(--gray-700);
-      margin-bottom: 1.4rem;
-      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
     }
 
     .links {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
       margin-top: 2rem;
     }
 
-    .links a {
-      text-decoration: none;
-      border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      padding: 0.8rem 1rem;
-      font-size: 0.95rem;
-      transition: 0.2s ease;
-      background: rgba(255,255,255,0.7);
-    }
-
-    .links a:hover {
-      border-color: var(--purple-200);
-      color: var(--purple-600);
-    }
-
     footer {
-      padding: 2.4rem 3rem;
+      padding: 2rem;
       background: var(--ink);
-      color: #d8d0ff;
+      color: #fff;
       margin-top: 4rem;
-    }
-
-    .footer-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #d8d0ff;
-      text-decoration: none;
-      font-size: 0.93rem;
-    }
-
-    .muted {
-      color: var(--gray-400);
-    }
-
-    @media (max-width: 980px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
-      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .hero { padding-top: 7.5rem; }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html#home" class="nav-logo" aria-label="Início">
-      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
-        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
-        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
-        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
-      </svg>
-    </a>
-
-    <ul class="nav-links">
-      <li><a href="index.html#categorias" class="active">Projetos</a></li>
-      <li><a href="index.html#sobre">Sobre</a></li>
-      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
-      <li><a href="index-en.html" class="lang-switch">EN</a></li>
-    </ul>
-  </nav>
-
   <div class="hero">
     <div class="container">
       <div class="eyebrow">Case de negócio</div>
       <h1>Distrimax</h1>
       <p class="intro">
-        Esse case parte de um problema que parece contraditório à primeira vista: ter estoque alto e ainda assim perder venda por ruptura. A ideia aqui foi organizar esse cenário em dados e transformar a análise em uma leitura mais clara para decisão.
+        Um case sobre como estoque alto não significa necessariamente eficiência — e como a falta de priorização pode gerar perda de venda mesmo com capital parado.
       </p>
     </div>
   </div>
@@ -269,59 +168,57 @@
     </div>
 
     <div class="content">
+
       <div class="kicker">Sobre o projeto</div>
 
       <p class="text">
-        A Distrimax é uma distribuidora fictícia de produtos de higiene e limpeza, com operação em três regiões do Brasil, faturamento anual de R$ 18 milhões e cerca de 850 SKUs ativos. O problema central do case nasce do encontro entre duas dores bem comuns na operação: o comercial percebe perda de venda por falta de produto, enquanto o financeiro enxerga capital parado em estoque. :contentReference[oaicite:1]{index=1}
+        A Distrimax é uma distribuidora fictícia com atuação em três regiões do Brasil, faturamento anual de R$ 18 milhões e cerca de 850 SKUs ativos.
       </p>
 
       <p class="text">
-        A hipótese inicial era que a empresa tratava todos os itens da mesma forma, sem considerar que uma parte menor dos SKUs concentrava a maior parte da receita. A base foi estruturada em quatro tabelas, com cadastro de SKUs, vendas, estoque e política ideal de reposição. :contentReference[oaicite:2]{index=2}
+        O ponto de partida do case é um conflito comum: o comercial percebe perda de venda por falta de produto, enquanto o financeiro enxerga excesso de estoque. A análise surgiu para entender como esses dois cenários podem coexistir — e onde está o desalinhamento.
+      </p>
+
+      <div class="kicker">Como conduzi a análise</div>
+
+      <p class="text">
+        Estruturei a base com dados de vendas, estoque, cadastro de produtos e política de reposição. A análise foi feita em SQL e organizada no Power BI para facilitar a leitura e priorização.
       </p>
 
       <p class="text">
-        O que eu quis mostrar nesse projeto foi justamente esse desalinhamento. Não era só uma questão de ter muito ou pouco estoque. O ponto era entender onde o estoque estava sobrando, onde ele estava faltando e como isso impactava o resultado.
+        O estudo passou por curva ABC, cobertura de estoque, análise de ruptura e comparação entre o cenário atual e o modelo ideal de reposição.
       </p>
 
-      <div class="kicker">Leitura da análise</div>
+      <div class="kicker">Principais insights</div>
 
       <p class="text">
-        A análise foi construída em SQL e depois organizada no Power BI para facilitar a leitura. O case passa por curva ABC, ranking de rupturas, receita perdida e comparação entre a cobertura atual e a política ideal de reposição. Esse caminho ajuda a sair de uma visão genérica do estoque e chegar mais perto da causa do problema. :contentReference[oaicite:3]{index=3}
-      </p>
-
-      <p class="text">
-        Um dos achados mais importantes é que os itens da curva A concentram aproximadamente 80% da receita, mas operam com cobertura média de cerca de 10 dias, abaixo da meta recomendada de 30 a 45 dias. Isso ajuda a explicar por que a empresa consegue carregar excesso em parte do portfólio e ainda assim sofrer com ruptura nos itens mais relevantes para o faturamento. :contentReference[oaicite:4]{index=4}
+        Os itens mais relevantes (curva A) concentravam cerca de 80% da receita, mas operavam com cobertura média de apenas 10 dias — muito abaixo do recomendado.
       </p>
 
       <p class="text">
-        Outro ponto forte do case é que ele não fica só no diagnóstico. A análise de causa raiz mostra que a política de reposição uniforme, o cálculo do estoque mínimo sem considerar o giro real e a ausência de revisão por curva ABC estão entre os fatores que sustentam o problema. :contentReference[oaicite:5]{index=5}
+        Ao mesmo tempo, produtos de menor relevância acumulavam estoque excessivo. Ou seja, o problema não era falta de estoque, mas sim má distribuição.
       </p>
 
       <p class="text">
-        No fim, esse projeto representa bem o tipo de análise que eu gosto de construir: aquela que conecta operação, impacto financeiro e decisão. Mais do que mostrar um número, a ideia foi deixar claro por que o problema acontece e onde a empresa deveria agir primeiro.
+        A causa principal estava na política de reposição uniforme e na ausência de priorização por criticidade dos itens.
+      </p>
+
+      <div class="kicker">Leitura de negócio</div>
+
+      <p class="text">
+        Esse case mostra como decisões operacionais impactam diretamente o resultado financeiro. Mais do que medir o problema, a análise ajuda a direcionar onde agir primeiro para reduzir ruptura sem aumentar capital parado.
       </p>
 
       <div class="links">
-        <a href="https://github.com/monithelly/distrimax-case" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub</a>
-        <a href="analises.html">Voltar para cases</a>
+        <a href="https://github.com/monithelly/distrimax-case" target="_blank">Ver repositório</a>
+        <a href="analisa.html">Voltar</a>
       </div>
+
     </div>
   </section>
 
   <footer>
-    <div class="footer-inner">
-      <div>
-        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
-        <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
-      </div>
-
-      <div class="footer-links">
-        <a href="index.html#categorias">Projetos</a>
-        <a href="index.html#sobre">Sobre</a>
-        <a href="index-en.html">English version</a>
-        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    <p>Monithelly Simões — Portfólio de Dados</p>
   </footer>
 
 </body>
