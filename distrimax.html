@@ -11,87 +11,168 @@
 
   <style>
     :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-200: #c5b9ff;
       --purple-400: #8b78ea;
       --purple-600: #5a49c6;
+      --purple-800: #3b2f8e;
       --gray-50: #fafaf8;
       --gray-100: #ece9e2;
+      --gray-200: #d9d4ca;
       --gray-400: #7d7a73;
       --gray-700: #3f3c38;
       --ink: #191724;
+      --white: #ffffff;
       --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--gray-50);
       color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo svg {
+      width: 208px;
+      height: auto;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--gray-400);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-600);
+    }
+
+    .lang-switch {
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
     }
 
     .hero {
-      padding: 9rem 2rem 4rem;
-      background: linear-gradient(180deg, rgba(243,240,255,0.6) 0%, rgba(250,250,248,1) 80%);
+      padding: 9rem 3rem 3rem;
+      background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
       border-bottom: 1px solid var(--gray-100);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
     }
 
-    .eyebrow {
+    .hero-kicker {
       color: var(--purple-400);
       font-size: 12px;
-      letter-spacing: 0.15em;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
       margin-bottom: 1rem;
     }
 
     h1 {
       font-family: 'Lora', serif;
-      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-size: clamp(3.5rem, 8vw, 5.8rem);
+      line-height: 0.95;
+      font-weight: 400;
       color: var(--purple-600);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.04em;
     }
 
-    .headline {
+    .hero-question {
+      max-width: 760px;
+      margin: 0 auto 1.8rem;
       font-family: 'Lora', serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.4;
-      max-width: 700px;
-      margin: 0 auto 2rem;
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.35;
+      color: var(--ink);
     }
 
     .hero-link {
-      display: inline-block;
-      border: 1px solid var(--gray-100);
-      padding: 0.8rem 1.2rem;
-      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      background: white;
-      transition: 0.2s;
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.85rem 1.2rem;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      background: rgba(255,255,255,0.8);
     }
 
     .hero-link:hover {
-      border-color: var(--purple-400);
+      border-color: var(--purple-200);
       color: var(--purple-600);
     }
 
     section {
-      padding: 3rem 1.5rem;
+      padding: 3rem;
     }
 
-    .image-wrap {
-      max-width: 900px;
-      margin: 0 auto 2rem;
-    }
-
-    .image-wrap img {
+    .case-image {
       width: 100%;
+      max-width: 980px;
+      display: block;
+      margin: 0 auto 3rem;
       border-radius: 20px;
-      box-shadow: var(--shadow);
+      border: none;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      background: #fff;
     }
 
-    .content {
+    .text-container {
       max-width: 680px;
       margin: 0 auto;
+      text-align: left;
+    }
+
+    .text {
+      line-height: 1.9;
+      color: var(--gray-700);
+      margin-bottom: 1.3rem;
+      font-size: 1rem;
     }
 
     .kicker {
@@ -102,87 +183,173 @@
       margin: 2rem 0 1rem;
     }
 
-    .text {
-      line-height: 1.85;
-      color: var(--gray-700);
-      margin-bottom: 1.2rem;
-      font-size: 1.05rem;
+    footer {
+      padding: 2.4rem 3rem;
+      background: var(--ink);
+      color: #d8d0ff;
+      margin-top: 4rem;
     }
 
-    footer {
-      padding: 2rem;
-      text-align: center;
-      background: var(--ink);
-      color: white;
-      margin-top: 3rem;
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d8d0ff;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .muted {
+      color: var(--gray-400);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 7.5rem; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="hero">
-    <div class="eyebrow">Case de negócio</div>
-    <h1>O Paradoxo</h1>
-
-    <p class="headline">
-      Como uma empresa pode ter excesso de estoque e ruptura de vendas ao mesmo tempo?
-    </p>
-
-    <a class="hero-link" href="https://github.com/monithelly/distrimax-case" target="_blank">
-      Ver análise completa no GitHub
+  <nav>
+    <a href="index.html#home" class="nav-logo" aria-label="Início">
+      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
+        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
+        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
+      </svg>
     </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#categorias" class="active">Projetos</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
+      <li><a href="index-en.html" class="lang-switch">EN</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="hero-kicker">Case de negócio</div>
+      <h1>O Paradoxo</h1>
+      <p class="hero-question">
+        Como uma empresa pode ter excesso de estoque e ruptura de vendas ao mesmo tempo?
+      </p>
+      <a class="hero-link" href="https://github.com/monithelly/distrimax-case" target="_blank" rel="noopener noreferrer">
+        Ver análise completa no GitHub
+      </a>
+    </div>
   </div>
 
   <section>
-    <div class="image-wrap">
-      <img src="distrimax.png" alt="Dashboard do case Distrimax">
-    </div>
+    <div class="container">
 
-    <div class="content">
+      <img
+        src="distrimax.png"
+        alt="Dashboard do case Distrimax"
+        class="case-image reveal"
+      >
 
-      <div class="kicker">Sobre o projeto</div>
+      <div class="text-container">
+        <div class="kicker">Sobre o projeto</div>
 
-      <p class="text">
-        A Distrimax é uma distribuidora fictícia com atuação em três regiões do Brasil, faturamento anual de R$ 18 milhões e cerca de 850 SKUs ativos.
-      </p>
+        <p class="text reveal">
+          A Distrimax é uma distribuidora fictícia com atuação em três regiões do Brasil, faturamento anual de R$ 18 milhões e cerca de 850 SKUs ativos.
+        </p>
 
-      <p class="text">
-        O case começa com um problema comum na operação. Mesmo com estoque alto, a empresa ainda perde venda por falta de produto. Enquanto o comercial sente a ruptura, o financeiro vê dinheiro parado.
-      </p>
+        <p class="text reveal">
+          O case parte de um problema comum na operação. Mesmo com estoque alto, a empresa ainda perde venda por falta de produto. Enquanto o comercial sente a ruptura, o financeiro enxerga capital parado.
+        </p>
 
-      <div class="kicker">Como eu analisei</div>
+        <div class="kicker">Como eu analisei</div>
 
-      <p class="text">
-        Estruturei a base com dados de vendas, estoque, cadastro de produtos e política de reposição. Trabalhei a análise em SQL e organizei os resultados no Power BI.
-      </p>
+        <p class="text reveal">
+          Estruturei a base com dados de vendas, estoque, cadastro de produtos e política de reposição. A análise foi construída em SQL e organizada no Power BI para facilitar a leitura.
+        </p>
 
-      <p class="text">
-        Passei por curva ABC, cobertura de estoque e identificação de ruptura para entender onde o problema realmente estava.
-      </p>
+        <p class="text reveal">
+          Passei por curva ABC, cobertura de estoque e identificação de ruptura para entender não só o tamanho do problema, mas onde ele realmente estava.
+        </p>
 
-      <div class="kicker">O que apareceu</div>
+        <div class="kicker">O que apareceu</div>
 
-      <p class="text">
-        Os itens mais importantes para o faturamento operavam com cobertura abaixo do ideal, enquanto produtos menos relevantes acumulavam estoque.
-      </p>
+        <p class="text reveal">
+          Os itens mais importantes para o faturamento operavam com cobertura abaixo do ideal, enquanto produtos menos relevantes acumulavam estoque.
+        </p>
 
-      <p class="text">
-        O problema não era falta de estoque. Era falta de priorização.
-      </p>
+        <p class="text reveal">
+          O problema não era exatamente falta de estoque. Era falta de priorização. A reposição tratava todos os itens da mesma forma, sem considerar o peso de cada um no resultado.
+        </p>
 
-      <div class="kicker">O que isso mostra</div>
+        <div class="kicker">O que isso mostra</div>
 
-      <p class="text">
-        Ajustando a lógica de reposição com base na criticidade dos produtos, seria possível reduzir ruptura sem aumentar capital parado.
-      </p>
+        <p class="text reveal">
+          A análise deixa claro que uma lógica de reposição orientada por criticidade já seria suficiente para reduzir ruptura nos itens mais relevantes sem aumentar o capital parado.
+        </p>
+      </div>
 
     </div>
   </section>
 
   <footer>
-    <p>Monithelly Simões — Portfólio de Dados</p>
+    <div class="footer-inner">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
+        <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#categorias">Projetos</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index-en.html">English version</a>
+        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 
 </body>
 </html>
