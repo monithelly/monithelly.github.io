@@ -5,48 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS Analytics | Monithelly Simões</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-200: #c5b9ff;
+      --purple-400: #8b78ea;
+      --purple-600: #5a49c6;
+      --purple-800: #3b2f8e;
+      --gray-50: #fafaf8;
+      --gray-100: #ece9e2;
+      --gray-200: #d9d4ca;
+      --gray-400: #7d7a73;
+      --gray-700: #3f3c38;
+      --ink: #191724;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'DM Sans', sans-serif;
-      background: #fafaf8;
-      margin: 0;
-      color: #191724;
+      background: var(--gray-50);
+      color: var(--ink);
+      overflow-x: hidden;
     }
+
+    a { color: inherit; }
 
     nav {
       position: fixed;
       top: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 3rem;
-      background: rgba(250,250,248,0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #eee;
-      z-index: 10;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo svg {
+      width: 208px;
+      height: auto;
     }
 
     .nav-links {
+      list-style: none;
       display: flex;
       gap: 2rem;
-      font-size: 13px;
+      align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #7d7a73;
+      font-size: 13px;
+      color: var(--gray-400);
+      transition: 0.2s ease;
     }
 
+    .nav-links a:hover,
     .nav-links a.active {
-      color: #5a49c6;
+      color: var(--purple-600);
+    }
+
+    .lang-switch {
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
     }
 
     .hero {
       padding: 9rem 3rem 3rem;
       background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
+      border-bottom: 1px solid var(--gray-100);
     }
 
     .container {
@@ -57,10 +104,12 @@
 
     h1 {
       font-family: 'Lora', serif;
-      font-size: 3.5rem;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 0.98;
       font-weight: 400;
-      color: #5a49c6;
+      color: var(--purple-600);
       margin-bottom: 1rem;
+      letter-spacing: -0.03em;
     }
 
     section {
@@ -74,6 +123,7 @@
       border: none;
       box-shadow: 0 15px 40px rgba(0,0,0,0.05);
       margin-bottom: 3rem;
+      background: #fff;
     }
 
     .text-container {
@@ -84,32 +134,83 @@
 
     .text {
       line-height: 1.9;
-      color: #3f3c38;
+      color: var(--gray-700);
       margin-bottom: 1.5rem;
+      font-size: 1rem;
     }
 
     .kicker {
-      color: #8b78ea;
+      color: var(--purple-400);
       font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
       margin-bottom: 1rem;
     }
 
     footer {
+      padding: 2.4rem 3rem;
+      background: var(--ink);
+      color: #d8d0ff;
       margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid #ece9e2;
-      color: #7d7a73;
-      font-size: 0.9rem;
-      text-align: center;
     }
 
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d8d0ff;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .muted {
+      color: var(--gray-400);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 7.5rem; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      iframe {
+        height: 520px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<nav>
+  <nav>
     <a href="index.html#home" class="nav-logo" aria-label="Início">
       <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
         <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
@@ -118,54 +219,51 @@
         <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
       </svg>
     </a>
+
     <ul class="nav-links">
-      <li><a href="https://monithelly.github.io/">Home</a></li>
       <li><a href="index.html#categorias" class="active">Projetos</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
       <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
-      <li><a href="dashboards-en.html" class="lang-switch">EN</a></li>
+      <li><a href="index-en.html" class="lang-switch">EN</a></li>
     </ul>
   </nav>
 
-<div class="hero">
-  <div class="container">
-    <h1>CS Analytics</h1>
+  <div class="hero">
+    <div class="container">
+      <h1>CS Analytics</h1>
+    </div>
   </div>
-</div>
 
-<section>
-  <div class="container">
+  <section>
+    <div class="container">
 
-    <!-- DASHBOARD -->
-    <iframe
-      src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
-      allowFullScreen>
-    </iframe>
+      <iframe
+        src="https://app.powerbi.com/view?r=eyJrIjoiOWUyNWU4NDMtYTA2Mi00Nzg5LThiNWUtOTIwZGVkNTgzNjZiIiwidCI6IjgwMTM5M2ZjLTc2MGYtNDU2OC1hMmU2LWQ3NmM3OTM3ZmE0OSJ9"
+        allowFullScreen>
+      </iframe>
 
-    <!-- TEXTO CENTRALIZADO -->
-    <div class="text-container">
+      <div class="text-container">
+        <div class="kicker">Sobre o projeto</div>
 
-      <div class="kicker">Sobre o projeto</div>
+        <p class="text">
+          Em Customer Success, analisar métricas isoladas não é suficiente. O valor está em entender o contexto da carteira.
+        </p>
 
-      <p class="text">
-        Em Customer Success, analisar métricas isoladas não é suficiente. O valor está em entender o contexto da carteira.
-      </p>
+        <p class="text">
+          Desenvolvi este painel que centraliza indicadores como ARR, MRR, clientes ativos, health score, renovações e churn estimado.
+        </p>
 
-      <p class="text">
-        Desenvolvi este painel que centraliza indicadores como ARR, MRR, clientes ativos, health score, renovações e churn estimado.
-      </p>
+        <p class="text">
+          A estrutura prioriza uma leitura rápida dos principais números, com possibilidade de aprofundar a análise conforme necessário. Assim, é possível identificar rapidamente a saúde da carteira, a distribuição da receita e os pontos de atenção, como renovações próximas.
+        </p>
 
-      <p class="text">
-        A estrutura prioriza uma leitura rápida dos principais números, com possibilidade de aprofundar a análise conforme necessário. Assim, é possível identificar rapidamente a saúde da carteira, a distribuição da receita e os pontos de atenção, como renovações próximas.
-      </p>
-
-      <p class="text">
-        Destaque: ao cruzar receita com health score, o painel facilita a identificação de riscos e oportunidades, apoiando decisões mais estratégicas no dia a dia.
-      </p>
+        <p class="text">
+          Destaque: ao cruzar receita com health score, o painel facilita a identificação de riscos e oportunidades, apoiando decisões mais estratégicas no dia a dia.
+        </p>
+      </div>
 
     </div>
-
-  </div>
-</section>
+  </section>
 
   <footer>
     <div class="footer-inner">
@@ -173,9 +271,10 @@
         <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
         <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
       </div>
+
       <div class="footer-links">
-        <a href="#categorias">Projetos</a>
-        <a href="#sobre">Sobre</a>
+        <a href="index.html#categorias">Projetos</a>
+        <a href="index.html#sobre">Sobre</a>
         <a href="index-en.html">English version</a>
         <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
@@ -193,6 +292,6 @@
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   </script>
-  
+
 </body>
 </html>
