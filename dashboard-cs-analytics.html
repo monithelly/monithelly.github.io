@@ -167,25 +167,32 @@
   </div>
 </section>
 
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">
-        Monithelly Simões
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
+        <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
       </div>
-      <div class="muted">
-        Portfólio de dados com foco em análise, melhoria e impacto no negócio
+      <div class="footer-links">
+        <a href="#categorias">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="index-en.html">English version</a>
+        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-links">
-      <a href="index.html#categorias">Projetos</a>
-      <a href="index.html#sobre">Sobre</a>
-      <a href="index-en.html">English version</a>
-      <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-  </div>
-</footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
   
 </body>
 </html>
