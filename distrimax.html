@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distrimax | Monithelly Simões</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-200: #c5b9ff;
+      --purple-400: #8b78ea;
+      --purple-600: #5a49c6;
+      --purple-800: #3b2f8e;
+      --gray-50: #fafaf8;
+      --gray-100: #ece9e2;
+      --gray-200: #d9d4ca;
+      --gray-400: #7d7a73;
+      --gray-700: #3f3c38;
+      --ink: #191724;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo svg {
+      width: 208px;
+      height: auto;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--gray-400);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-600);
+    }
+
+    .lang-switch {
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+    }
+
+    .hero {
+      padding: 9rem 3rem 3.5rem;
+      background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--purple-400);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 0.98;
+      font-weight: 400;
+      color: var(--purple-600);
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .intro {
+      max-width: 760px;
+      line-height: 1.9;
+      color: var(--gray-700);
+      font-size: 1.05rem;
+    }
+
+    section {
+      padding: 3rem;
+    }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .image-wrap {
+      max-width: 980px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .image-wrap img {
+      width: 100%;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-100);
+      background: #fff;
+      display: block;
+    }
+
+    .kicker {
+      color: var(--purple-400);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .text {
+      line-height: 1.95;
+      color: var(--gray-700);
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .links a {
+      text-decoration: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .links a:hover {
+      border-color: var(--purple-200);
+      color: var(--purple-600);
+    }
+
+    footer {
+      padding: 2.4rem 3rem;
+      background: var(--ink);
+      color: #d8d0ff;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d8d0ff;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .muted {
+      color: var(--gray-400);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 7.5rem; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html#home" class="nav-logo" aria-label="Início">
+      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
+        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
+        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
+      </svg>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#categorias" class="active">Projetos</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
+      <li><a href="index-en.html" class="lang-switch">EN</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="eyebrow">Case de negócio</div>
+      <h1>Distrimax</h1>
+      <p class="intro">
+        Esse case parte de um problema que parece contraditório à primeira vista: ter estoque alto e ainda assim perder venda por ruptura. A ideia aqui foi organizar esse cenário em dados e transformar a análise em uma leitura mais clara para decisão.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="image-wrap">
+      <img src="distrimax.png" alt="Prévia do case Distrimax">
+    </div>
+
+    <div class="content">
+      <div class="kicker">Sobre o projeto</div>
+
+      <p class="text">
+        A Distrimax é uma distribuidora fictícia de produtos de higiene e limpeza, com operação em três regiões do Brasil, faturamento anual de R$ 18 milhões e cerca de 850 SKUs ativos. O problema central do case nasce do encontro entre duas dores bem comuns na operação: o comercial percebe perda de venda por falta de produto, enquanto o financeiro enxerga capital parado em estoque. :contentReference[oaicite:1]{index=1}
+      </p>
+
+      <p class="text">
+        A hipótese inicial era que a empresa tratava todos os itens da mesma forma, sem considerar que uma parte menor dos SKUs concentrava a maior parte da receita. A base foi estruturada em quatro tabelas, com cadastro de SKUs, vendas, estoque e política ideal de reposição. :contentReference[oaicite:2]{index=2}
+      </p>
+
+      <p class="text">
+        O que eu quis mostrar nesse projeto foi justamente esse desalinhamento. Não era só uma questão de ter muito ou pouco estoque. O ponto era entender onde o estoque estava sobrando, onde ele estava faltando e como isso impactava o resultado.
+      </p>
+
+      <div class="kicker">Leitura da análise</div>
+
+      <p class="text">
+        A análise foi construída em SQL e depois organizada no Power BI para facilitar a leitura. O case passa por curva ABC, ranking de rupturas, receita perdida e comparação entre a cobertura atual e a política ideal de reposição. Esse caminho ajuda a sair de uma visão genérica do estoque e chegar mais perto da causa do problema. :contentReference[oaicite:3]{index=3}
+      </p>
+
+      <p class="text">
+        Um dos achados mais importantes é que os itens da curva A concentram aproximadamente 80% da receita, mas operam com cobertura média de cerca de 10 dias, abaixo da meta recomendada de 30 a 45 dias. Isso ajuda a explicar por que a empresa consegue carregar excesso em parte do portfólio e ainda assim sofrer com ruptura nos itens mais relevantes para o faturamento. :contentReference[oaicite:4]{index=4}
+      </p>
+
+      <p class="text">
+        Outro ponto forte do case é que ele não fica só no diagnóstico. A análise de causa raiz mostra que a política de reposição uniforme, o cálculo do estoque mínimo sem considerar o giro real e a ausência de revisão por curva ABC estão entre os fatores que sustentam o problema. :contentReference[oaicite:5]{index=5}
+      </p>
+
+      <p class="text">
+        No fim, esse projeto representa bem o tipo de análise que eu gosto de construir: aquela que conecta operação, impacto financeiro e decisão. Mais do que mostrar um número, a ideia foi deixar claro por que o problema acontece e onde a empresa deveria agir primeiro.
+      </p>
+
+      <div class="links">
+        <a href="https://github.com/monithelly/distrimax-case" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub</a>
+        <a href="analises.html">Voltar para cases</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
+        <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#categorias">Projetos</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index-en.html">English version</a>
+        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
