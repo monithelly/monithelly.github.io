@@ -112,14 +112,16 @@
       padding: 3rem;
     }
 
-    iframe {
+    .preview-img {
       width: 100%;
-      height: 650px;
       border-radius: 20px;
-      border: none;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
       margin-bottom: 2rem;
-      background: #fff;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+    }
+
+    .preview-img:hover {
+      transform: scale(1.01);
     }
 
     .buttons {
@@ -202,7 +204,6 @@
       nav { padding: 1rem 1.2rem; }
       .nav-links { display: none; }
       .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-      iframe { height: 520px; }
 
       .footer-inner {
         flex-direction: column;
@@ -241,7 +242,7 @@
 <section>
   <div class="container">
 
-    <iframe src="https://qinsight.streamlit.app/"></iframe>
+    <img src="images/q-insight.png" alt="Q Insight preview" class="preview-img">
 
     <div class="buttons">
       <a href="https://github.com/monithelly/q_insight" target="_blank" class="btn">Ver projeto no GitHub</a>
