@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q Insight | Monithelly Simões</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-400: #8b78ea;
+      --purple-600: #5a49c6;
+      --gray-50: #fafaf8;
+      --gray-100: #ece9e2;
+      --gray-400: #7d7a73;
+      --gray-700: #3f3c38;
+      --ink: #191724;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--ink);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      z-index: 100;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    .hero {
+      padding: 9rem 3rem 3rem;
+      background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
+      border-bottom: 1px solid var(--gray-100);
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: var(--purple-600);
+    }
+
+    section {
+      padding: 3rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: 650px;
+      border-radius: 20px;
+      border: none;
+      background: #fff;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      color: #000;
+    }
+
+    .btn-primary {
+      background: var(--purple-600);
+      color: #fff;
+      border: none;
+    }
+
+    .kicker {
+      color: var(--purple-400);
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .text {
+      line-height: 1.9;
+      color: var(--gray-700);
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 2.4rem 3rem;
+      background: var(--ink);
+      color: #d8d0ff;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      section, footer { padding: 2rem 1rem; }
+      iframe { height: 500px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Monithelly</a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#categorias">Projetos</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank">Falar comigo</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>Q Insight</h1>
+</div>
+
+<section>
+  <div class="container">
+
+    <iframe src="https://qinsight.streamlit.app/"></iframe>
+
+    <div class="buttons">
+      <a href="SEU_LINK_GITHUB" target="_blank" class="btn">Ver código</a>
+      <a href="https://qinsight.streamlit.app/" target="_blank" class="btn btn-primary">Abrir aplicação</a>
+    </div>
+
+    <div class="kicker">Sobre o projeto</div>
+
+    <p class="text">
+      Esse projeto nasceu da necessidade de tornar a análise de dados mais simples e mais acessível no dia a dia.
+    </p>
+
+    <p class="text">
+      Muitas vezes os dados existem, mas não estão organizados de uma forma que ajude de verdade na leitura ou na tomada de decisão.
+      O Q Insight foi criado justamente para resolver esse tipo de situação.
+    </p>
+
+    <p class="text">
+      A aplicação permite visualizar informações de forma mais clara, explorar indicadores e entender melhor o que está acontecendo,
+      sem precisar ficar cruzando planilhas ou fazendo análises manuais.
+    </p>
+
+    <p class="text">
+      A ideia principal não é só mostrar números, mas facilitar a interpretação.
+      Transformar dados em algo que realmente ajude no dia a dia e torne as decisões mais seguras.
+    </p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>Monithelly Simões</strong><br>
+      Portfólio de dados com foco em análise, melhoria e impacto no negócio
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
