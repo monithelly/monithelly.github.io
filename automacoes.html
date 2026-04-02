@@ -24,10 +24,14 @@
       --gray-700: #3f3c38;
       --ink: #191724;
       --white: #ffffff;
-      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--gray-50);
@@ -49,7 +53,9 @@
       border-bottom: 1px solid rgba(0,0,0,0.04);
     }
 
-    .nav-logo svg { width: 208px; }
+    .nav-logo svg {
+      width: 208px;
+    }
 
     .nav-links {
       list-style: none;
@@ -83,62 +89,90 @@
       font-size: 11px;
       text-transform: uppercase;
       margin-bottom: 1rem;
+      letter-spacing: 0.08em;
     }
 
     h1 {
       font-family: 'Lora', serif;
       font-size: 5rem;
+      line-height: 1;
       color: var(--purple-600);
+      margin-bottom: 1.25rem;
     }
 
     .hero-copy {
       max-width: 700px;
       color: var(--gray-700);
       line-height: 1.8;
-      margin-top: 1rem;
+      font-size: 1.05rem;
     }
 
-    section { padding: 4rem 3rem; }
+    section {
+      padding: 4rem 3rem;
+    }
 
     .section-inner {
       max-width: 1160px;
       margin: 0 auto;
     }
 
+    .section-label {
+      color: var(--purple-400);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
+      align-items: start;
     }
 
-    .placeholder-card {
+    .project-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
       background: #fff;
-      border-radius: 28px;
       border: 1px solid var(--gray-100);
-      padding: 1.8rem;
-      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
-      transition: 0.2s ease;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .placeholder-card:hover {
-      transform: translateY(-3px);
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.05);
     }
 
-    .placeholder-label {
-      color: var(--purple-400);
-      font-size: 11px;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+    .project-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      background: #f1eee8;
     }
 
-    .placeholder-title {
+    .project-content {
+      padding: 1.6rem 1.4rem 1.5rem;
+    }
+
+    .project-title {
       font-family: 'Lora', serif;
-      font-size: 1.6rem;
-      margin-bottom: 0.6rem;
+      font-size: 2rem;
+      line-height: 1.1;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
     }
 
-    .placeholder-text {
+    .project-category {
+      font-size: 0.95rem;
+      color: var(--gray-400);
+      margin-bottom: 0.9rem;
+    }
+
+    .project-text {
       color: var(--gray-700);
       line-height: 1.7;
       font-size: 0.95rem;
@@ -148,6 +182,7 @@
       padding: 2.4rem 3rem;
       background: var(--ink);
       color: #d8d0ff;
+      margin-top: 2rem;
     }
 
     .footer-inner {
@@ -156,11 +191,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 2rem;
     }
 
     .footer-links {
       display: flex;
       gap: 1.2rem;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
@@ -169,11 +206,40 @@
       font-size: 0.9rem;
     }
 
-    .muted { color: var(--gray-400); }
+    .muted {
+      color: var(--gray-400);
+    }
 
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: 1fr; }
-      nav { padding: 1rem; }
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .hero,
+      section,
+      footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -209,29 +275,31 @@
 
 <section>
   <div class="section-inner">
+    <div class="section-label">Aplicações</div>
 
     <div class="grid">
-      <a href="qinsight.html" style="text-decoration: none; color: inherit;">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Aplicação</div>
-          <div class="placeholder-title">Q Insight</div>
-          <div class="placeholder-text">
+      <a href="quinsight.html" class="project-card">
+        <img src="images/q-insight.png" alt="Preview do projeto Q Insight" class="project-image">
+        <div class="project-content">
+          <div class="project-title">Q Insight</div>
+          <div class="project-category">Python</div>
+          <div class="project-text">
             Aplicação interativa para organizar e explorar dados, permitindo análises mais claras e apoio à tomada de decisão.
           </div>
         </div>
       </a>
 
-      <a href="chamados.html" style="text-decoration: none; color: inherit;">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Aplicação</div>
-          <div class="placeholder-title">Central de Chamados</div>
-          <div class="placeholder-text">
+      <a href="chamados.html" class="project-card">
+        <img src="images/central-chamados.png" alt="Preview do projeto Central de Chamados" class="project-image">
+        <div class="project-content">
+          <div class="project-title">Central de Chamados</div>
+          <div class="project-category">Python</div>
+          <div class="project-text">
             Projeto que simula uma central de abertura e acompanhamento de chamados internos.
           </div>
         </div>
       </a>
     </div>
-
   </div>
 </section>
 
