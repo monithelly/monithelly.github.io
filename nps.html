@@ -59,7 +59,6 @@
 
     .nav-logo svg {
       width: 208px;
-      height: auto;
     }
 
     .nav-links {
@@ -73,18 +72,10 @@
       text-decoration: none;
       font-size: 13px;
       color: var(--gray-400);
-      transition: 0.2s ease;
     }
 
-    .nav-links a:hover,
     .nav-links a.active {
       color: var(--purple-600);
-    }
-
-    .lang-switch {
-      border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      padding: 0.45rem 0.85rem;
     }
 
     .hero {
@@ -102,8 +93,6 @@
     h1 {
       font-family: 'Lora', serif;
       font-size: clamp(3rem, 7vw, 5rem);
-      line-height: 0.98;
-      font-weight: 400;
       color: var(--purple-600);
       margin-bottom: 1rem;
     }
@@ -117,11 +106,6 @@
       border-radius: 20px;
       margin-bottom: 2rem;
       box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-      transition: 0.3s ease;
-    }
-
-    .preview-img:hover {
-      transform: scale(1.01);
     }
 
     .buttons {
@@ -157,15 +141,13 @@
       color: var(--purple-400);
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       margin-bottom: 1rem;
     }
 
     .text {
-      line-height: 1.9;
+      line-height: 1.8;
       color: var(--gray-700);
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
+      margin-bottom: 1.4rem;
     }
 
     footer {
@@ -187,28 +169,15 @@
     .footer-links {
       display: flex;
       gap: 1.2rem;
-      flex-wrap: wrap;
     }
 
     .footer-links a {
       color: #d8d0ff;
       text-decoration: none;
-      font-size: 0.93rem;
     }
 
     .muted {
       color: var(--gray-400);
-    }
-
-    @media (max-width: 980px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
-      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
@@ -229,7 +198,6 @@
     <li><a href="index.html#categorias" class="active">Projetos</a></li>
     <li><a href="index.html#sobre">Sobre</a></li>
     <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank">Falar comigo</a></li>
-    <li><a href="nps-en.html" class="lang-switch">EN</a></li>
   </ul>
 </nav>
 
@@ -242,30 +210,32 @@
 <section>
   <div class="container">
 
-    <img src="images/n8n.png" alt="Automação de NPS preview" class="preview-img">
+    <img src="images/n8n.png" alt="Fluxo n8n" class="preview-img">
+    <img src="images/slack.png" alt="Slack integração" class="preview-img">
 
     <div class="buttons">
-      <a href="https://github.com/monithelly/cs-analytics-monitor-nps" target="_blank" class="btn">Ver projeto no GitHub</a>
-      <a href="https://github.com/monithelly/cs-analytics-monitor-nps" target="_blank" class="btn btn-primary">Ver detalhes do fluxo</a>
+      <a href="https://github.com/monithelly/cs-analytics-monitor-nps" target="_blank" class="btn btn-primary">
+        Ver implementação
+      </a>
     </div>
 
     <div class="text-container">
       <div class="kicker">Sobre o projeto</div>
 
       <p class="text">
-        Esse projeto nasceu da vontade de organizar melhor a coleta de feedback e deixar o acompanhamento do NPS mais prático no dia a dia.
+        Esse projeto foi uma forma de resolver um problema bem comum. O feedback até existia, mas ficava solto e difícil de acompanhar.
       </p>
 
       <p class="text">
-        Em muitos times, a resposta do cliente até existe, mas fica espalhada, sem contexto ou sem visibilidade para quem realmente precisa agir. A ideia aqui foi criar um fluxo simples, útil e fácil de acompanhar.
+        A ideia foi criar um fluxo simples onde o envio da pesquisa, a resposta do usuário e o acompanhamento acontecem no mesmo lugar.
       </p>
 
       <p class="text">
-        A automação foi construída no n8n com integração ao Slack, permitindo que o envio, o recebimento e o acompanhamento das respostas aconteçam de forma mais fluida. Em vez de depender de controles manuais, o processo passa a ter um caminho claro.
+        Usei o n8n para montar a automação e integrar com o Slack. Assim, cada resposta já chega organizada e visível para o time, sem precisar ficar olhando planilha ou puxando informação manualmente.
       </p>
 
       <p class="text">
-        Mais do que automatizar uma tarefa, esse projeto foi pensado para aproximar o feedback da rotina operacional. Quando a informação chega do jeito certo, fica muito mais fácil identificar sinais, acompanhar a experiência do cliente e transformar percepção em ação.
+        No fim, não é só sobre automatizar. É sobre garantir que o feedback realmente seja visto e usado no dia a dia.
       </p>
 
     </div>
@@ -276,7 +246,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">
+      <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff;">
         Monithelly Simões
       </div>
       <div class="muted">
