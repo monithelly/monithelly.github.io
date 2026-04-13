@@ -35,7 +35,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* NAV IGUAL AO DASHBOARDS */
     nav {
       position: fixed;
       top: 0;
@@ -75,7 +74,6 @@
       padding: 0.45rem 0.85rem;
     }
 
-    /* HERO */
     .hero {
       padding: 9rem 3rem 4rem;
       background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
@@ -97,7 +95,6 @@
       margin-bottom: 2rem;
     }
 
-    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -138,7 +135,6 @@
       color: var(--gray-400);
     }
 
-    /* FOOTER IGUAL */
     footer {
       padding: 2.4rem 3rem;
       background: var(--ink);
@@ -175,7 +171,6 @@
 
 <body>
 
-<!-- NAV PADRÃO -->
 <nav>
   <a href="index.html#home" class="nav-logo">
     <svg viewBox="0 0 210 42">
@@ -194,7 +189,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="container">
     <h1>Cases de negócio</h1>
@@ -215,11 +209,21 @@
         </div>
       </a>
 
+      <!-- NASA -->
+      <a class="card" href="nasa-risk-scoring.html">
+        <img src="images/nasa.png" alt="Case NASA Risk Scoring">
+        <div class="card-body">
+          <div class="card-title">NASA Risk Scoring</div>
+          <div class="card-desc">
+            Sistema de priorização de risco para manutenção preditiva com dados da NASA.
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </div>
 
-<!-- FOOTER PADRÃO -->
 <footer>
   <div class="footer-inner">
     <div>
