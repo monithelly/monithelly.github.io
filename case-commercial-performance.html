@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case | Performance Comercial | Monithelly Simões</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple-50: #f3f0ff;
+      --purple-100: #dfd8ff;
+      --purple-200: #c5b9ff;
+      --purple-400: #8b78ea;
+      --purple-600: #5a49c6;
+      --purple-800: #3b2f8e;
+      --gray-50: #fafaf8;
+      --gray-100: #ece9e2;
+      --gray-200: #d9d4ca;
+      --gray-400: #7d7a73;
+      --gray-700: #3f3c38;
+      --ink: #191724;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(42, 33, 100, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo svg {
+      width: 208px;
+      height: auto;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--gray-400);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple-600);
+    }
+
+    .lang-switch {
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+    }
+
+    .hero {
+      padding: 9rem 3rem 3rem;
+      background: linear-gradient(180deg, rgba(243,240,255,0.55) 0%, rgba(250,250,248,1) 75%);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      line-height: 0.98;
+      font-weight: 400;
+      color: var(--purple-600);
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--gray-700);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 3rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      margin-bottom: 3rem;
+      background: #fff;
+      display: block;
+    }
+
+    .text-container {
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .kicker {
+      color: var(--purple-400);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .text {
+      line-height: 1.9;
+      color: var(--gray-700);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .insights-list,
+    .recommendations-list {
+      margin: 0 0 1.75rem 1.25rem;
+      color: var(--gray-700);
+      line-height: 1.9;
+    }
+
+    .insights-list li,
+    .recommendations-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 0 auto 2.5rem;
+      max-width: 750px;
+      text-align: left;
+    }
+
+    .meta-card {
+      background: #fff;
+      border: 1px solid var(--gray-100);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .meta-label {
+      color: var(--purple-400);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.55rem;
+    }
+
+    .meta-value {
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      background: var(--purple-600);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .cta:hover {
+      background: var(--purple-800);
+    }
+
+    footer {
+      padding: 2.4rem 3rem;
+      background: var(--ink);
+      color: #d8d0ff;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d8d0ff;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .muted {
+      color: var(--gray-400);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero, section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 7.5rem; }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html#home" class="nav-logo" aria-label="Início">
+      <svg viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="18,2 33,10 33,27 18,35 3,27 3,10" fill="#5a49c6"/>
+        <text x="18" y="20" font-family="Lora,Georgia,serif" font-size="16" font-weight="400" fill="#fff" text-anchor="middle" dominant-baseline="central">M</text>
+        <text x="44" y="15" font-family="Lora,Georgia,serif" font-size="19" font-weight="500" fill="#191724">Monithelly</text>
+        <text x="45" y="29" font-family="DM Sans,sans-serif" font-size="8.5" font-weight="400" fill="#7d7a73" letter-spacing="1.4">PORTFÓLIO DE DADOS</text>
+      </svg>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#categorias" class="active">Projetos</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">Falar comigo</a></li>
+      <li><a href="index-en.html" class="lang-switch">EN</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <h1>Performance Comercial</h1>
+      <p class="subtitle">
+        Um case com foco em entender como vendas, descontos, custos e promoções impactam a margem e a rentabilidade do negócio.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <img
+        class="hero-image"
+        src="images/commercial.png"
+        alt="Preview do case de Performance Comercial">
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <div class="meta-label">Contexto</div>
+          <div class="meta-value">Análise comercial com foco em venda líquida, margem, custo total e desempenho promocional.</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Ferramentas</div>
+          <div class="meta-value">Power BI, modelagem analítica, DAX e construção de narrativa visual para tomada de decisão.</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Objetivo</div>
+          <div class="meta-value">Transformar indicadores comerciais em leitura prática para identificar oportunidades e riscos.</div>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <div class="kicker">Problema</div>
+
+        <p class="text">
+          Apesar do bom volume de vendas, não havia clareza sobre como descontos e promoções estavam impactando a margem e a lucratividade do negócio.
+        </p>
+
+        <div class="kicker">Objetivo</div>
+
+        <p class="text">
+          O objetivo deste case foi analisar a relação entre vendas, custos, margem e descontos, identificando oportunidades de melhoria na estratégia comercial e tornando a leitura dos dados mais acionável.
+        </p>
+
+        <div class="kicker">Análise</div>
+
+        <p class="text">
+          Para isso, organizei o dashboard com foco em indicadores executivos e aprofundamento analítico. Foram avaliadas métricas de venda líquida, custo total, margem de lucro e percentual de desconto, com recortes por categoria, produto, loja, país e promoções.
+        </p>
+
+        <p class="text">
+          A estrutura visual foi pensada para permitir uma leitura rápida dos principais números e, ao mesmo tempo, apoiar análises mais detalhadas sobre desempenho comercial. Também foi desenvolvida uma versão em modo claro e outra em modo escuro, mantendo consistência visual e legibilidade em diferentes contextos de uso.
+        </p>
+
+        <div class="kicker">Principais insights</div>
+
+        <ul class="insights-list">
+          <li>Produtos com maior volume de vendas nem sempre são os mais rentáveis.</li>
+          <li>Descontos mais agressivos não geram, necessariamente, ganho proporcional em margem.</li>
+          <li>Algumas categorias apresentam alta receita, mas menor eficiência de lucro.</li>
+          <li>Promoções específicas tendem a performar melhor do que descontos generalizados.</li>
+        </ul>
+
+        <div class="kicker">Recomendações</div>
+
+        <ul class="recommendations-list">
+          <li>Revisar a política de descontos priorizando produtos com maior margem.</li>
+          <li>Ajustar estratégias promocionais com base em desempenho histórico e retorno real.</li>
+          <li>Monitorar continuamente a relação entre volume vendido e lucratividade.</li>
+          <li>Direcionar esforços comerciais para categorias e canais mais eficientes.</li>
+        </ul>
+
+        <div class="kicker">Resultado</div>
+
+        <p class="text">
+          O case transforma uma visão isolada de faturamento em uma leitura mais completa da performance comercial, conectando venda, custo, margem e promoções de forma clara. O resultado é um material mais próximo de uma análise de negócio do que de um dashboard apenas visual.
+        </p>
+
+        <a class="cta" href="commercial.html">Ver dashboard completo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
+        <div class="muted">Portfólio de dados com foco em análise, melhoria e impacto no negócio</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#categorias">Projetos</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index-en.html">English version</a>
+        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
