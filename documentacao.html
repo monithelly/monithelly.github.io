@@ -151,6 +151,15 @@
       border: 1px solid var(--gray-100);
       padding: 1.6rem;
       box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
+      text-decoration: none;
+      display: block;
+      transition: 0.25s ease;
+    }
+
+    .placeholder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--purple-100);
     }
 
     .placeholder-label {
@@ -251,16 +260,25 @@
     <div class="eyebrow">Projetos · Documentação</div>
     <h1><em>Documentação</em></h1>
     <p class="hero-copy">
-      Aqui vou concentrar materiais que mostram a estrutura por trás dos projetos, incluindo lógica dos indicadores, organização dos dados, regras de negócio e contexto das análises.
+      Aqui concentro materiais que mostram a estrutura por trás dos projetos, incluindo lógica dos indicadores, organização dos dados, regras de negócio e contexto das análises.
     </p>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-kicker">Projetos em preparação</div>
+    <div class="section-kicker">Documentações disponíveis</div>
 
     <div class="grid">
+
+      <a class="placeholder-card" href="documentacao-churn.html">
+        <div class="placeholder-label">SQL · Power BI · DAX</div>
+        <div class="placeholder-title">Churn e Retenção</div>
+        <div class="placeholder-text">
+          Documentação técnica do case de churn em telecom, com origem do dataset, consultas SQL, principais medidas DAX e processo analítico usado na construção do dashboard.
+        </div>
+      </a>
+
       <div class="placeholder-card">
         <div class="placeholder-label">Em breve</div>
         <div class="placeholder-title">Dicionário de dados</div>
@@ -273,13 +291,14 @@
         <div class="placeholder-label">Em breve</div>
         <div class="placeholder-title">Lógica de indicadores</div>
         <div class="placeholder-text">
-          Página destinada a documentação de métricas, regras de cálculo e critérios utilizados em dashboards e análises.
+          Página destinada à documentação de métricas, regras de cálculo e critérios utilizados em dashboards e análises.
         </div>
       </div>
+
     </div>
 
     <div class="placeholder-note">
-      Esta seção foi preparada para receber conteúdos de bastidor que complementam os projetos principais e ajudam a tornar a leitura mais completa.
+      Esta seção reúne conteúdos de bastidor que complementam os projetos principais e ajudam a tornar a leitura mais completa, mostrando não apenas o resultado visual, mas também a lógica analítica por trás de cada entrega.
     </div>
   </div>
 </section>
