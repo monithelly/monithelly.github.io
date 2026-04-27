@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Monithelly Simões | Data Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --purple-50: #f3f0ff;
@@ -27,6 +29,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--gray-50);
@@ -51,8 +54,14 @@
       border-bottom: 1px solid rgba(0,0,0,0.04);
     }
 
-    .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-logo svg { width: 208px; height: auto; }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+    }
 
     .nav-links {
       list-style: none;
@@ -106,36 +115,72 @@
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--purple-600);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
+    .hero-card {
+      background: transparent;
+      border: none;
+      padding: 0;
+      box-shadow: none;
+      display: flex;
+      justify-content: center;
     }
 
-    .eyebrow::before {
+    .hero-photo {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      border: 2px solid var(--purple-100);
+      margin-bottom: 0;
+    }
+
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--purple-200);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      color: var(--purple-600);
+      background: rgba(255,255,255,0.72);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      box-shadow: 0 10px 24px rgba(90, 73, 198, 0.06);
+    }
+
+    .availability-pill::before {
       content: "";
-      width: 22px;
-      height: 1px;
-      background: var(--purple-400);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple-600);
     }
 
     h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(3rem, 7vw, 5.2rem);
-      line-height: 0.98;
-      font-weight: 400;
-      margin-bottom: 1.4rem;
-      letter-spacing: -0.03em;
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      font-size: clamp(2.6rem, 4.7vw, 4rem);
+      line-height: 1.03;
+      font-weight: 800;
+      letter-spacing: -0.065em;
+      margin-bottom: 1.2rem;
+      color: var(--purple-800);
     }
 
     h1 em {
+      color: var(--purple-800);
+      font-style: normal;
+    }
+
+    .hero-role {
+      max-width: 640px;
       color: var(--purple-600);
-      font-style: italic;
+      font-size: 1.08rem;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
     }
 
     .hero-copy {
@@ -144,11 +189,6 @@
       line-height: 1.85;
       color: var(--gray-700);
       margin-bottom: 2rem;
-    }
-
-    .hero-copy strong {
-      color: var(--ink);
-      font-weight: 600;
     }
 
     .hero-actions {
@@ -176,7 +216,10 @@
       box-shadow: var(--shadow);
     }
 
-    .btn-primary:hover { background: var(--purple-800); transform: translateY(-1px); }
+    .btn-primary:hover {
+      background: var(--purple-800);
+      transform: translateY(-1px);
+    }
 
     .btn-secondary {
       border: 1px solid var(--purple-200);
@@ -186,164 +229,596 @@
 
     .btn-secondary:hover { border-color: var(--purple-600); }
 
-    .hero-card {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-photo {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 50%;
-      border: 2px solid var(--purple-100);
-    }
-
     section { padding: 5.5rem 3rem; }
-    .section-inner { max-width: 1160px; margin: 0 auto; }
 
-    .section-kicker {
-      color: var(--purple-400);
-      font-size: 11px;
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      color: var(--purple-600);
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
-    .subtle-chips span {
-      border: 1px solid var(--gray-100);
-      border-radius: 999px;
-      padding: 0.45rem 0.75rem;
+    .about {
+      background: linear-gradient(180deg, #fff 0%, #fcfbff 100%);
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .about-grid {
+      max-width: 820px;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .about-title {
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .about-title span { color: var(--purple-600); }
+
+    .about-text {
+      color: var(--gray-700);
+      font-size: 0.96rem;
+      line-height: 1.75;
+      max-width: 720px;
+      margin-bottom: 1.3rem;
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.4rem;
+    }
+
+    .metric-card {
+      border: 1px solid var(--purple-100);
+      border-radius: 20px;
+      background: var(--purple-50);
+      padding: 1rem;
+    }
+
+    .metric-card strong {
+      display: block;
+      color: var(--purple-800);
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-card span {
+      color: var(--gray-700);
       font-size: 0.92rem;
-      margin-right: 6px;
+      line-height: 1.55;
     }
 
-    .subtle-results p {
-      font-size: 0.95rem;
+    .skills-showcase {
+      background: #fff;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.35fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .skills-intro h2 {
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .skills-intro p {
       color: var(--gray-400);
+      line-height: 1.8;
+      font-size: 1rem;
+      max-width: 430px;
+    }
+
+    .skills-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1rem;
+      border: 1px solid var(--gray-100);
+      border-radius: 22px;
+      background: var(--gray-50);
+      padding: 1.15rem;
+      transition: 0.25s ease;
+    }
+
+    .skill-row:hover {
+      border-color: var(--purple-200);
+      background: var(--purple-50);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-row > span {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--purple-600);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .skill-row h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
+      color: var(--ink);
+    }
+
+    .skill-row p {
+      color: var(--gray-400);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .categories {
+      background: #fff;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .projects-title {
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      color: var(--ink);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      max-width: 750px;
+      color: var(--gray-400);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
     }
 
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     .category-card {
+      background: var(--white);
       border: 1px solid var(--gray-100);
       border-radius: 24px;
       padding: 1.5rem;
       text-decoration: none;
+      transition: 0.25s ease;
+      box-shadow: 0 10px 30px rgba(22, 18, 45, 0.03);
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--purple-200);
+      box-shadow: var(--shadow);
+    }
+
+    .category-card:hover h3 { color: var(--purple-600); }
+
+    .category-label {
+      color: var(--purple-400);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.8rem;
+    }
+
+    .category-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      transition: 0.2s ease;
+    }
+
+    .category-card p {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: var(--gray-400);
+    }
+
+    .contact-mini {
+      padding: 2.8rem 3rem;
+      background: linear-gradient(180deg, #fcfbff 0%, var(--gray-50) 100%);
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .contact-mini-card {
+      max-width: 1160px;
+      margin: 0 auto;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--purple-800) 0%, var(--purple-600) 68%, var(--purple-400) 100%);
+      color: var(--white);
+      border: none;
+      box-shadow: var(--shadow);
+      padding: 2.1rem 2.3rem;
+    }
+
+    .contact-copy {
+      max-width: 760px;
+    }
+
+    .contact-label {
+      display: inline-flex;
+      color: rgba(255,255,255,0.78);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .contact-mini h2 {
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      color: var(--white);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-mini p {
+      color: rgba(255,255,255,0.86);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+
+    .contact-icons {
+      margin-top: 1.35rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.26);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .contact-icons a:hover {
+      background: var(--white);
+      color: var(--purple-600);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(25, 23, 36, 0.14);
     }
 
     footer {
-      padding: 2rem;
+      padding: 2.4rem 3rem;
       background: var(--ink);
-      color: white;
+      color: #d8d0ff;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d8d0ff;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .muted { color: var(--gray-400); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+
+      .hero,
+      section,
+      footer,
+      .contact-mini {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+
+      .hero-inner,
+      .skills-layout,
+      .categories-grid,
+      .about-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 7.5rem; }
+
+      .hero-card { max-width: 340px; }
+
+      .hero-photo {
+        width: 210px;
+        height: 210px;
+      }
+
+      .skills-intro p {
+        max-width: 100%;
+      }
+
+      .contact-mini-card {
+        padding: 1.5rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav>
+    <a href="#home" class="nav-logo" aria-label="Home">Monithelly</a>
 
-<nav>
-  <a href="#home" class="nav-logo">Monithelly</a>
-  <ul class="nav-links">
-    <li><a href="#categorias">Projects</a></li>
-    <li><a href="index.html">PT</a></li>
-  </ul>
-</nav>
+    <ul class="nav-links">
+      <li><a href="#categorias">Projects</a></li>
+      <li><a href="#sobre">About</a></li>
+      <li><a href="#habilidades">Skills</a></li>
+      <li><a href="#contato">Contact</a></li>
+      <li><a href="index.html" class="lang-switch">PT</a></li>
+    </ul>
+  </nav>
 
-<section class="hero" id="home">
-  <div class="hero-inner">
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <aside class="hero-card reveal">
+        <img
+          src="images/foto.png"
+          alt="Monithelly Simões"
+          class="hero-photo"
+        />
+      </aside>
 
-    <aside class="hero-card">
-      <img src="https://media.licdn.com/dms/image/v2/D4E03AQEsVaodzpo2CQ/profile-displayphoto-scale_400_400/B4EZsniO55GoAg-/0/1765894844830?e=1775692800&v=beta&t=JnLmJpfiTp3zqnGAanUYoujuYi2-D_mIM4C8hUYRHcI" class="hero-photo"/>
-    </aside>
+      <div class="reveal">
+        <div class="availability-pill">Open to projects and collaborations</div>
+        <h1><em>Monithelly Simões</em></h1>
+        <div class="hero-role">BI Analyst | Automation & Process Improvement</div>
 
-    <div>
-      <div class="eyebrow">Business Analytics · Data Analysis · Continuous Improvement</div>
-      <h1><em>Monithelly Simões</em></h1>
+        <p class="hero-copy">
+          I turn data into clearer decisions through dashboards, automation and continuous improvement. I work on structuring information, identifying bottlenecks and supporting business areas with analyses that improve operational efficiency.
+        </p>
 
-      <p class="hero-copy">
-        I work with data analysis, dashboard creation, process automation and structuring analyses that help companies understand scenarios, improve efficiency and make more confident decisions.
-      </p>
-
-      <p class="hero-copy">
-        I have contributed to <strong>reducing execution time by up to 60%</strong>, focusing on identifying bottlenecks and turning analysis into practical action.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#categorias" class="btn-primary">View projects</a>
-        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" class="btn-secondary">Contact me</a>
+        <div class="hero-actions">
+          <a href="#categorias" class="btn-primary">View projects</a>
+          <a href="#contato" class="btn-secondary">Contact</a>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="about" id="sobre">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="reveal">
+          <h2 class="about-title">ABOUT <span>ME</span></h2>
 
-<section>
-  <div class="section-inner" style="display:flex; justify-content:space-between; gap:4rem; flex-wrap:wrap;">
+          <p class="about-text">
+            I am Monithelly and I work with data analysis, BI, automation and process improvement. My background combines operational understanding, information organization and the development of solutions that help business areas better understand their indicators, bottlenecks and opportunities.
+          </p>
 
-    <div>
-      <div class="section-kicker">Tools & Skills</div>
-      <div class="subtle-chips">
-        <span>Power BI</span>
-        <span>SQL</span>
-        <span>Python</span>
-        <span>DAX</span>
-        <span>Excel</span>
-        <span>Continuous Improvement</span>
+          <p class="about-text">
+            I have hands-on experience creating dashboards, structuring datasets, documenting processes and developing solutions applied to real business routines. My focus is to turn scattered data into clear, useful and actionable analyses.
+          </p>
+
+          <p class="about-text">
+            I continue to strengthen my work in Business Analytics, Power BI, SQL, Python and automation, aiming to contribute to projects that connect data, efficiency and real business impact.
+          </p>
+
+          <div class="about-metrics">
+            <div class="metric-card">
+              <strong>Up to 60%</strong>
+              <span>reduction in task execution time</span>
+            </div>
+
+            <div class="metric-card">
+              <strong>Recognition in 2023</strong>
+              <span>for an internal website and app project</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div>
-      <div class="section-kicker">Key Highlights</div>
-      <div class="subtle-results">
-        <p><strong>Up to 60%</strong> reduction in execution time</p>
-        <p><strong>Recognition in 2023</strong> for internal platform project</p>
+  <section class="skills-showcase" id="habilidades">
+    <div class="section-inner">
+      <div class="skills-layout">
+        <div class="skills-intro reveal">
+          <span class="section-tag">Technical Skills</span>
+          <h2>Skills that support my deliveries</h2>
+          <p>
+            I organize data, create indicators and develop solutions to reduce rework, bring visibility to operations and support clearer decisions.
+          </p>
+        </div>
+
+        <div class="skills-list">
+          <div class="skill-row reveal">
+            <span>01</span>
+            <div>
+              <h3>Business Intelligence</h3>
+              <p>Power BI, DAX, indicators, dashboards and performance monitoring.</p>
+            </div>
+          </div>
+
+          <div class="skill-row reveal">
+            <span>02</span>
+            <div>
+              <h3>Data structuring</h3>
+              <p>SQL, Excel, data modeling, cleaning, standardization and database organization.</p>
+            </div>
+          </div>
+
+          <div class="skill-row reveal">
+            <span>03</span>
+            <div>
+              <h3>Process automation</h3>
+              <p>Python, Power Apps, Power Automate and workflows to optimize repetitive tasks.</p>
+            </div>
+          </div>
+
+          <div class="skill-row reveal">
+            <span>04</span>
+            <div>
+              <h3>Continuous improvement</h3>
+              <p>Routine mapping, bottleneck identification, documentation and process standardization.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section id="categorias">
-  <div class="section-inner">
-
-    <div class="section-kicker">Projects</div>
-
-    <div class="categories-grid">
-
-      <div class="category-card">
-        <h3>Dashboards</h3>
-        <p>Power BI dashboards focused on business and decision-making.</p>
+  <section class="categories" id="categorias">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 class="projects-title">PROJECTS</h2>
+        <p class="section-intro">
+          Dashboards, business cases, automations and documentation organized by type of delivery.
+        </p>
       </div>
 
-      <div class="category-card">
-        <h3>Business Cases</h3>
-        <p>Analysis focused on understanding problems and guiding decisions.</p>
-      </div>
+      <div class="categories-grid">
+        <a class="category-card reveal" href="dashboards-en.html">
+          <div class="category-label">PT · EN</div>
+          <h3>Dashboards</h3>
+          <p>Power BI dashboards focused on business and decision-making.</p>
+        </a>
 
-      <div class="category-card">
-        <h3>Automation</h3>
-        <p>Automation and apps to improve efficiency.</p>
-      </div>
+        <a class="category-card reveal" href="analises-en.html">
+          <div class="category-label">PT · EN</div>
+          <h3>Business Cases</h3>
+          <p>Analytical studies focused on understanding problems and guiding decisions.</p>
+        </a>
 
-      <div class="category-card">
-        <h3>Documentation</h3>
-        <p>Data structure and logic behind the analysis.</p>
-      </div>
+        <a class="category-card reveal" href="automacoes-en.html">
+          <div class="category-label">PT · EN</div>
+          <h3>Automation</h3>
+          <p>Automation, apps and experiments focused on operational efficiency.</p>
+        </a>
 
+        <a class="category-card reveal" href="documentacao-en.html">
+          <div class="category-label">PT · EN</div>
+          <h3>Documentation</h3>
+          <p>Structure, logic and organization behind the projects.</p>
+        </a>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="contact-mini" id="contato">
+    <div class="contact-mini-card reveal">
+      <div class="contact-copy">
+        <span class="contact-label">Contact</span>
+        <h2>Let's talk?</h2>
+        <p>
+          Like what you saw? Let's talk. I am open to short-term projects, collaborations and also exchanging ideas and learning about data.
+        </p>
 
-<footer>
-  <div>Monithelly Simões · Data Portfolio</div>
-</footer>
+        <div class="contact-icons">
+          <a href="mailto:monithellyfsimoes@gmail.com" aria-label="Send email" title="Email">✉</a>
+          <a href="https://wa.me/5541997768596" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp" title="WhatsApp">☎</a>
+          <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.35rem;">Monithelly Simões</div>
+        <div class="muted">Data portfolio focused on analysis, process improvement and business impact</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#categorias">Projects</a>
+        <a href="#sobre">About</a>
+        <a href="index.html">Portuguese version</a>
+        <a href="https://www.linkedin.com/in/monithellysimoes" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
